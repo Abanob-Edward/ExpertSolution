@@ -49,7 +49,8 @@ Expert.Application =
         Expert.Application.active = number;
         Expert.Application.updateProgress();
     },
-    Next: function (currentDiv, otherDiv) {
+    Next: function (currentDiv, otherDiv)
+    {
         var valid = true;
         if (currentDiv == 'divMainInformation')
             valid = Expert.Application.SaveMainInformation();

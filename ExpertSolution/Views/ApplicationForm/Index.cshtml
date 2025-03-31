@@ -144,47 +144,14 @@
 </div>
 
 <div id="divMainInformation" class="divapplicationform droid-arabic-kufi container" name="div1">
-    <form class="needs-validation" novalidate onsubmit="return false;" id="mainform">
+   
         @await Html.PartialAsync("_Evaluation1", _applicationForm)
-        <div class="row ">
-            @* <div class="col-md-4 "> *@
-            @*     <nav> *@
-            @*         <ol class="breadcrumb" style="float:left"> *@
-            @*             <li class="breadcrumb-item active padding-top-10">صفحة 1 - 6</li> *@
-            @*         </ol> *@
-            @*     </nav> *@
-            @* </div> *@
-            <div class="col-8 text-start">
-                <button class="btn btnNext" onclick="Expert.Application.Next('divMainInformation','divEvaluationFirst')">التالى</button>
-            </div>
-            <div class="col-4 text-end">
-                <button class="btn btnSave" style="@disabled" onclick="Expert.Application.SaveClose('divMainInformation')">حفظ وإغلاق</button>
-
-                </div>
-        </div>
-    </form>
+  
 </div>
 <div id="divEvaluationFirst" style="display:none" class="divapplicationform droid-arabic-kufi container" name="div2">
     <form class="needs-validation" novalidate onsubmit="return false;" id="EvaluationFirst">
         @await Html.PartialAsync("_Evaluation2", _applicationForm)
-        <div class="row ">
-            @* <div class="col-md-4 "> *@
-            @*     <nav> *@
-            @*         <ol class="breadcrumb" style="float:left"> *@
-            @*             <li class="breadcrumb-item active padding-top-10">صفحة 2 - 6</li> *@
-            @*         </ol> *@
-            @*     </nav> *@
-            @* </div> *@
-            <div class="col-8 text-start">
-                <button class="btn btnNext" onclick="Expert.Application.Next('divEvaluationFirst','divEvaluationSecond')">التالى</button>
-                <button class="btn btnPrev" onclick="Expert.Application.Previous('divEvaluationFirst','divMainInformation')">السابق</button>
-
-            </div>
-            <div class="col-4 text-end">
-                <button class="btn btnSave" style="@disabled" onclick="Expert.Application.SaveClose('divEvaluationSeven')">حفظ وإغلاق</button>
-
-                </div>
-        </div>
+        
     </form>
 
 </div>
@@ -192,13 +159,7 @@
     <form class="row g-1 needs-validation" novalidate onsubmit="return false;" id="EvaluationSecond">
         @await Html.PartialAsync("_Evaluation3", _applicationForm)
         <div class="row ">
-            @* <div class="col-md-4 "> *@
-            @*     <nav> *@
-            @*         <ol class="breadcrumb" style="float:left"> *@
-            @*             <li class="breadcrumb-item active padding-top-10">صفحة 3 - 6</li> *@
-            @*         </ol> *@
-            @*     </nav> *@
-            @* </div> *@
+        
             <div class="col-8 text-start">
                 <button class="btn btnNext" onclick="Expert.Application.Next('divEvaluationSecond','divEvaluationThird')">التالى</button>
                 <button class="btn btnPrev" onclick="Expert.Application.Previous('divEvaluationSecond','divEvaluationFirst')">السابق</button>
@@ -208,11 +169,12 @@
                 <button class="btn btnSave" style="@disabled" onclick="Expert.Application.SaveClose('divEvaluationSecond')">حفظ وإغلاق</button>
 
             </div>
-            </div>
+        </div>
     </form>
 </div>
+
 <div id="divEvaluationThird" style="display:none" class="divapplicationform droid-arabic-kufi container" name="div4">
-    <form class="row g-1 needs-validation" novalidate onsubmit="return false;" id="EvaluationThird">
+    <form class="row g-1 needs-validation" novalidate onsubmit="return false;" >
         @await Html.PartialAsync("_Evaluation4", _applicationForm)
         <div class="row ">
             @* <div class="col-md-4 "> *@
@@ -235,7 +197,7 @@
     </form>
 </div>
 <div id="divEvaluationFourth" style="display:none" class="divapplicationform droid-arabic-kufi container" name="div5">
-    <form class="row g-1 needs-validation" novalidate onsubmit="return false;" id="EvaluationFourth">
+    <form class="row g-1 needs-validation" novalidate onsubmit="return false;">
         @await Html.PartialAsync("_Evaluation5", _applicationForm)
         <div class="row ">
             @* <div class="col-md-4 "> *@
