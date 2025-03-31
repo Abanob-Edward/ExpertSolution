@@ -1,0 +1,59 @@
+﻿@inject ICommonDAO _CommonDAO;
+@{
+    var EvaluatorGroupLst = _CommonDAO.GetEvaluatorGroup();
+}
+<div class="modal fade" id="ActionModal" tabindex="-1" data-bs-backdrop="false" aria-hidden="true" style="display: none;">
+    <input type="hidden" id="hiddenUserGUID" value="" data-status="" />
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <!-- Default Tabs -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">حالة الإستمارة</button>
+                    </li>
+                    <li class="nav-item" role="presentation" style="display:none">
+                        <button class="nav-link" id="group-tab" data-bs-toggle="tab" data-bs-target="#group" type="button" role="tab" aria-controls="group" aria-selected="false" tabindex="-1">المجموعة</button>
+                    </li>
+                    <li class="nav-item" role="presentation" style="display:none">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</button>
+                    </li>
+                </ul>
+                <div class="tab-content pt-2" id="myTabContent">
+                    <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <select class="form-select" id="selectStatus" aria-label="Default select example">
+                            <option value="InProgress">قيد التسجيل</option>
+                            <option value="Finished"> منتهية التسجيل</option>
+                            <option value="Paid">تم الدفع</option>
+                            <option value="Accepted">مقبولة</option>
+                            <option value="Cancelled">ملغية</option>
+                            <option value="NotAccepted"> غير مقبولة</option>
+                        </select>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="Expert.ApplicationManage.ChangeStatus()">حفظ</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="group" role="tabpanel" aria-labelledby="group-tab">
+                        <select class="form-select" id="selectEvaluatorGroupId" aria-label="Default select example">
+                            <option selected=""></option>
+                            @foreach (var obj in EvaluatorGroupLst)
+                            {
+                                    <option value="@obj.Id">@obj.Name.Trim()</option>
+                            }
+                        </select>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="Expert.ApplicationManage.ChangeGroup()">حفظ</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        Saepe animi et soluta ad odit soluta sunt. Nihil quos omnis animi debitis cumque. Accusantium quibusdam perspiciatis qui qui omnis magnam. Officiis accusamus impedit molestias nostrum veniam. Qui amet ipsum iure. Dignissimos fuga tempore dolor.
+                    </div>
+                </div><!-- End Default Tabs -->
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+            </div>
+        </div>
+    </div>
+</div>

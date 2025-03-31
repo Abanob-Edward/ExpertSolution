@@ -1,0 +1,186 @@
+﻿@inject ICommonDAO _CommonDAO;
+@model ApplicationForm;
+@{
+    // var code = "First";
+    // var userInfo = Html.GetUserinfo();
+    // var showEvalbtn = false;
+    // var totalDegree = 0;
+    var countyLst = _CommonDAO.GetCountry();
+    var scienceDegreeList = _CommonDAO.GetLookup("lookupScienceDegree");
+    // @if (userInfo.UserType == 3 || userInfo.UserType == 2)
+    //     showEvalbtn = true;
+    // List<ApplicationFormEvaluation> ApplicationFormEvaluationLst = new List<ApplicationFormEvaluation>();
+    // List<AttachmentUI> AttachmentLst = new List<AttachmentUI>();
+    // if (Model != null && Model.ApplicationFormEvaluationLst.Count > 0)
+    // {
+    //     ApplicationFormEvaluationLst = Model.ApplicationFormEvaluationLst.Where(x => x.Code == code).ToList();
+    //     //AttachmentLst = Model.AttachmentLst.Where(x => x.Code == code).ToList();
+    // }
+    // if (Model != null && Model.AttachmentLst.Count > 0)
+    // {
+    //     AttachmentLst = Model.AttachmentLst.Where(x => x.Code == code).ToList();
+    // }
+    // List<ApplicationEvaluation> ApplicationEvaluationLst = new List<ApplicationEvaluation>();
+    // if (Model != null && Model.ApplicationEvaluationLst != null && Model.ApplicationEvaluationLst.Count > 0 && showEvalbtn)
+    // {
+    //     ApplicationEvaluationLst = Model.ApplicationEvaluationLst.Where(x => x.Code == code).ToList();
+    // }
+    // var evalView = new ApplicationFormEvaluationView();
+
+
+}
+<div class="dashboard-main-body bg-base droid-arabic-kufi container">
+
+    <div class="row gy-4">
+        <div class="col-lg-12">
+                <div class=" text-center heder-forms ">
+                    <h5 class="card-title mb-0"> المؤهلات الأكاديمية</h5>
+                </div>
+                <div class=" form-porder ">
+
+                <div class="card-body row gy-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label"> المؤهل</label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtNameAQ" class="form-control" required>
+                        <input type="hidden" id="hiddenAQId" value="" data-status="" />
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label"> جامعه / معهد</label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtplaceAQ" class="form-control" required>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">الدرجة العلمية</label>
+                        <span style="color:red;">*</span>
+                        <select class="form-select" id="selectDegreeScience" required>
+                            <option value="" selected>--اختر الدرجة العلمية --</option>
+                            @foreach (var obj in scienceDegreeList)
+                            {
+                                <option value="@obj.Id">@obj.Name.Trim()</option>
+                            }
+                           
+                        </select>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">التخصص</label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtSpecialist" class="form-control" required>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">سنة </label>
+                        <span style="color:red;">*</span>
+                        <select class="form-select" id="txtYear" required>
+                            <option value="">--اختر سنة--</option>
+                            <!-- Years will be dynamically populated here -->
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">الدرجة / التقدير </label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtDegree" class="form-control" required>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">الدولة  </label>
+                        <span style="color:red;">*</span>
+                        <select class="form-select" id="selectCountryIdAQ" required>
+                            <option value="" >--اختر ألدولة --</option>
+                            @foreach (var obj in countyLst)
+                            {
+                               
+                                <option value="@obj.Id">@obj.Name.Trim()</option>
+                            }
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">المرفقات </label>
+                        <span style="color:red;">*</span>
+                        <input class="form-control form-control-sm" type="file" id="AttachmentFile_AQ"
+                               accept=".pdf" />
+                        <div class="col-md-2" >
+                            <a id="AttachmentName_AQ" href="#" class="m-10" target="_blank"></a>
+                        </div>
+                        <div>
+                            حجم الملف المسموح به يجب أن لا يتجاوز 10 ميجا بايت ومن نوع pdf
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">ملاحظات</label>
+                        <textarea name="#0" class="form-control" id="txtNotesAQ" rows="4" cols="50" placeholder="ملاحظات أخرى..."></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary-600" onclick="SaveAcademicQualifications()" type="submit">إضافة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            
+                <div class=" text-center heder-forms ">
+                    <h5 class="text-white">قائمة المؤهلات الأكاديمية</h5>
+                </div>
+                <div class=" form-porder ">
+                <div class="table-responsive scroll-sm">
+
+
+                    <div class="table-center">
+                        <div class="scroll-container" data-simplebar>
+                            <table >
+                                <thead>
+                                    <tr>
+                                        <th width="30%" style="text-align: center; ">المؤهل</th>
+                                        <th width="15%" style="text-align: center; ">جامعه / معهد</th>
+                                        <th width="15%" style="text-align: center; ">الدرجة العلمية</th>
+                                        <th width="10%" style="text-align: center; ">التخصص</th>
+                                        <th width="5%" style="text-align: center; ">سنة</th>
+                                        <th width="15%" style="text-align: center; ">الدرجة / التقدير</th>
+                                        <th width="10%" style="text-align: center; "></th>
+                                        </tr>
+                                </thead>
+                                <tbody id="tblAQ">
+                                   
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    @* <table class="table bordered-table mb-0"> *@
+                    @*         <thead> *@
+                    @*             <tr> *@
+                    @*                 <th scope="col">المؤهل</th> *@
+                    @*                 <th scope="col">جامعه / معهد</th> *@
+                    @*                 <th scope="col">الدرجة العلمية</th> *@
+                    @*                 <th scope="col">التخصص</th> *@
+                    @*                 <th scope="col">سنة</th> *@
+                    @*                 <th scope="col">الدرجة / التقدير</th> *@
+                    @*                 <th scope="col"></th> *@
+                    @*             </tr> *@
+                    @*         </thead> *@
+                    @*         <tbody id="tblAQ"> *@
+                    @*         </tbody> *@
+                    @*     </table> *@
+                    @* </div> *@
+                </div>
+            </div><!-- card end -->
+    </div>
+</div>

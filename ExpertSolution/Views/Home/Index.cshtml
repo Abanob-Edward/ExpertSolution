@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "الصفحة الرئيسية";
+}
+
+<section class="section dashboard" style="font-size:larger">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="pagetitle text-center">
+                    <img src="~/assets/img/logo-90.png" alt="" class="img" s>
+                </div>
+                <div class="pagetitle text-center" style="direction:ltr">
+                    <h2>
+                        إستمارة الترشح
+                    </h2>
+                    <h3>
+                        نموذج المشاركة بالجائزة
+                    </h3>
+                     <h3 style="color:green;text-decoration:underline">
+                        الدورة الثالثة
+                    </h3>
+                </div>
+                <h2>شروط وأحكام المشاركة بالجائزة</h2>
+                <ul class="list-group">
+                    <li class="list-group-item"><i class="bi bi-check-circle me-1 text-primary"></i> لا تتطلب المشاركة في الجائزة رسوماً مالية.</li>
+                    <li class="list-group-item"><i class="bi bi-check-circle me-1 text-primary"></i>أن تكون المؤسسة/الجمعية عاملة في خدمة المجتمع لمدة لا تقل عن عامين.</li>
+                    <li class="list-group-item"><i class="bi bi-check-circle me-1 text-primary"></i>أن يكون هناك نظام لتدقيق ميزانية المؤسسة/الجمعية.</li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle me-1 text-primary"></i>تعبئة معلومات المؤسسة/الجمعية الواردة في نموذج المشاركة بشكل كامل
+                        وإرفاق الوثائق المطلوبة.
+                    </li>
+                    <li class="list-group-item"><i class="bi bi-check-circle me-1 text-primary"></i>لا يجوز التقدم بأكثر من مشاركة من الجهة الواحدة.</li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle me-1 text-primary"></i>
+                        لا يجوز لأعضاء هيئة تحكيم الجائزة ترشيح الجهات التي ينتمون إليها للمشاركة
+                        في الجائزة.
+
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle me-1 text-primary"></i>
+                        يشترط أن تكون المؤسسة/الجمعية مسجلة لدى جهة الاختصاص في الدولة
+                        التي تمارس بها المؤسسة النشاط.
+
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle me-1 text-primary"></i>
+                        لا يحق للمؤسسات أو الجمعيات الخيرية التي سبق أن حصلت على المركز الأول
+                        المشاركة بالجائزة إلا بعد مرور دورة واحدة من تاريخ حصولها على الجائزة.
+                    </li>
+
+                </ul>
+                <div class="pagetitle pt-5 " style="float:left">
+
+                    <button class="btn btn-primary w-100" onclick="location.href='@Url.Action("Index", "ApplicationForm")'">تسجيل إستمارة المشاركة</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

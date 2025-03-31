@@ -1,0 +1,131 @@
+﻿@inject ICommonDAO _CommonDAO;
+@{
+    ViewData["Title"] = " مبادرة اعتماد الخبراء  في مجال التواصل والعلاقات العامة ";
+    Layout = "_OuterLayoutWithoutImage";
+}
+
+<div class=" mx-auto " style="width:85%">
+
+    <form class="needs-validation" novalidate onsubmit="return false;">
+        <div class="card-body row gy-1">
+            <div class="d-flex align-items-center flex-column h-100 justify-content-center">
+                <img src="~/assets/images/landinglogin.png" alt="">
+            </div>
+
+         
+            @* <div class="mt-32 text-center text-sm">
+                <p class="mb-0">هل لديك حساب؟ <a href="@Url.Action("Login", "Account")" class="text-primary-600 fw-semibold">دخول</a></p>
+            </div> *@
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <a href="@Url.Action("login", "Account")" class="btn btn-primary text-sm btn-sm px-12 py-16 w-50 radius-12 mt-32">دخول</a>
+            </div>
+
+            <div class="col-md-6 text-right">
+                <a href="@Url.Action("Register", "Account")" class="btn btn-secondary text-sm btn-sm px-12 py-16 w-50 radius-12 mt-32">إنشاء حساب جديد</a>
+            </div>
+
+            
+        </div>
+    </form>
+</div>
+<script>
+    var checker = document.getElementById('condition');
+    var sendbtn = document.getElementById('sendform');
+    // when unchecked or checked, run the function
+    checker.onchange = function () {
+
+        enablebtn();
+    }
+    function enablebtn() {
+        var password = $('#txtPassword').val(),
+            conf = $('#txtRePassword').val();
+        if (document.getElementById('condition').checked && password == conf && password != '') {
+            sendbtn.disabled = false;
+        } else {
+            sendbtn.disabled = true;
+        }
+    }
+</script>
+<script src="~/Phone/js/intlTelInputWithUtils.js"></script>
+<script>
+    const input = document.querySelector("#phone");
+    const iti = window.intlTelInput(input, {
+        // allowDropdown: false,
+        // autoPlaceholder: "off",
+        // containerClass: "test",
+        // countryOrder: ["jp", "kr"],
+        // countrySearch: false,
+        // customPlaceholder: function(selectedCountryPlaceholder, selectedCountryData) {
+        //   return "e.g. " + selectedCountryPlaceholder;
+        // },
+        // dropdownContainer: document.querySelector('#custom-container'),
+        // excludeCountries: ["us"],
+        // fixDropdownWidth: false,
+        // formatAsYouType: false,
+        // formatOnDisplay: false,
+        // geoIpLookup: function(callback) {
+        //   fetch("https://ipapi.co/json")
+        //     .then(function(res) { return res.json(); })
+        //     .then(function(data) { callback(data.country_code); })
+        //     .catch(function() { callback(); });
+        // },
+        // hiddenInput: () => "phone_full",
+        // i18n: { 'de': 'Deutschland' },
+        initialCountry: "eg",
+        // nationalMode: false,
+        onlyCountries: ['eg', 'qa', 'sa', 'eh', 'ae', 'bh', 'om', 'kw', 'jo', 'sy', 'tn', 'ly', 'ps', 'dz', 'mr', 'lb', 'sd', 'iq', 'ye', 'dj', 'so', 'km'],
+        //placeholderNumberType: "MOBILE",
+        // showFlags: false,
+        // separateDialCode: true,
+        // strictMode: true,
+        // useFullscreenPopup: true,
+        // utilsScript: "/build/js/utils.js", // leading slash (and http-server) required for this to work in chrome
+        // validationNumberType: null,
+    });
+    window.iti = iti; // useful for testing
+</script>
+<script>
+
+    function validateInputs() {
+        var password = $('#txtPassword').val(),
+            conf = $('#txtRePassword').val(),
+            all_pass = true;
+
+        var uppercase = password.match(/[A-Z]/),
+            number = password.match(/[0-9]/);
+
+        if (password.length < 6) {
+            $('.password_length').removeClass('complete');
+            all_pass = false;
+        } else {
+            $('.password_length').addClass('complete')
+
+        }
+
+        if (uppercase) $('.password_uppercase').addClass('complete');
+        else {
+            $('.password_uppercase').removeClass('complete');
+            all_pass = false;
+
+        }
+
+        if (number) $('.password_number').addClass('complete');
+        else {
+            $('.password_number').removeClass('complete');
+            all_pass = false
+        }
+
+        if (password == conf && password != '') {
+            $('.password_match').addClass('complete');
+        }
+        else {
+            $('.password_match').removeClass('complete')
+            all_pass = false;
+        }
+        enablebtn();
+
+    }
+
+</script>

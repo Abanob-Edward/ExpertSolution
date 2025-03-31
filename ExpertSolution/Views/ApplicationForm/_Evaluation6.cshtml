@@ -1,0 +1,79 @@
+﻿@inject ICommonDAO _CommonDAO;
+@model ApplicationForm;
+@{
+    var questions = _CommonDAO.GetQuestions();
+    int i = 1;
+}
+
+<!-- Arabic Layout -->
+<div class="dashboard-main-body" dir="rtl">
+    <div class="card basic-data-table shadow-lg">
+        <div class="card-header p-3 border-0 bg-light">
+            <h5 class="form-label float-right">
+                هل يمكنك:
+            </h5>
+        </div>
+
+        <div class="card-body p-4">
+            <form id="questionForm">
+    <input type="hidden" name="expertGUID" id="expertGUID" value="@Model.MainInformation.GUID" />
+
+    
+        <div class="row">
+            @foreach (var question in questions)
+            {
+                <div class="col-6 mb-4">
+                    <div class="row m-0" >
+                                <div class="card shadow-sm rounded">
+                                    <div class="card-body card-bodyn">
+                                        <h6 class="card-title col-md-9">@i - @question.Content</h6>
+                                        <div class="d-flex justify-content-end gap-3 mt-3">
+                                            <div class="form-check ">
+                                                <input class="form-check-input yesNo" type="radio" name="question_@question.Id" id="question_@(question.Id)_yes" value="true" required>
+                                                <label class="form-check-label" for="question_@(question.Id)_yes">نعم</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input yesNo" type="radio" name="question_@question.Id" id="question_@(question.Id)_no" value="false" required>
+                                                <label class="form-check-label" for="question_@(question.Id)_no">لا</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                   
+                </div>
+                i++;
+            }
+            <div class="col-md-6 d-flex justify-content-center align-self-center mt-4">
+                <button type="button" class="btn btn-primary btn-lg px-5" onclick="submitAnswers()">حفظ الإجابات</button>
+            </div>
+        </div>
+  
+</form>
+        </div>
+    </div>
+</div>
+<!-- Registration and Payment Section -->
+<div class="dashboard-main-body">
+
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    </div>
+
+    <div class="card basic-data-table">
+        <div class="card-header p-0 border-0">
+            <div class="responsive-padding-40-150 bg-light-pink">
+                <div class="row gy-4 align-items-center">
+                    <div class="col-xl-7">
+                        <h4 class="mb-20">انهاء التسجيل والدفع الإلكترونى</h4>
+                        <h6>رسوم التقدم للمبادرة )200$ (مصروفات تسجيل وتقييم من قبل المنظمة)</h6>
+                        <p class="mb-0 text-secondary-light max-w-634-px text-xl">نشكركم على التسجيل فى مبادرة اعتماد الخبراء في مجال التواصل والعلاقات العامة، ولإتمام عملية التسجيل يرجى الضغط على رابط إنهاء التسجيل  أدناه واتمام عملية الدفع الإلكتروني لكى يتم النظر فى استمارة التسجيل الخاصة بحضراتكم. </p>
+                    </div>
+                    <div class="col-xl-5 d-xl-block d-none">
+                        <img src="assets/images/faq-img.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

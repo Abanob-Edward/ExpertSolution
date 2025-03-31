@@ -1,0 +1,95 @@
+﻿@model List<ApplicationFormService>;
+<div class="pagetitle text-center">
+    <h1>  أهم الخدمات/المساعدات التي تقدمها المؤسسة/الجمعية:</h1>
+
+</div>
+
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered border-primary">
+                <thead>
+                    <tr class="rowHeader">
+                        <th scope="col" width="20px"> <h4>م</h4></th>
+                        <th scope="col"> <h4> مسمى الخدمة/المساعدة/الإعانة</h4></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 1; i <=5; i++)
+                    {
+                        var desc = "";
+                        if (Model.Count >0)
+                        {
+                            var obj = Model.Where(x => x.Number == i).FirstOrDefault();
+                            desc = obj != null ? obj.Description:"";
+                        }
+                        var required = "";
+                        if (i ==1)
+                        {
+                            required = "required";
+                        }
+                        <tr>
+                            <th scope="row"> @i</th>
+                            <td>
+                                <input type="text" class="form-control txt-height" id="txtService_@i" onkeyup="Expert.Application.textCounter(this,'remainings_@i');" @required value="@desc">
+                                <div class="invalid-feedback">يجب إدخال هذا الحقل</div>
+                                <span style="float:left" id="remainings_@i"></span>
+
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>
+<div class="pagetitle text-center">
+    <h1> الفئات المستفيدة من خدمات ومنتجات المؤسسة/الجمعية:</h1>
+</div>
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered border-primary">
+                <thead>
+                    <tr class="rowHeader">
+                        <th scope="col" width="20px"> <h4>م</h4></th>
+                        <th scope="col"> <h4> اسم الفئة/الجهة المستفيدة</h4></th>
+                    </tr>
+                </thead>
+                <tbody>
+                     @for (int i = 1; i <=5; i++)
+                    {
+                        var required = "";
+                        var x = i + 5;
+                        var desc = "";
+                        if (Model.Count > 0)
+                        {
+                            var obj = Model.Where(xx => xx.Number == x).FirstOrDefault();
+                            desc = obj != null ? obj.Description : "";
+                        }
+                        if (i ==1)
+                        {
+                            required = "required";
+                        }
+                        <tr>
+                            <th scope="row"> @i</th>
+                            <td>
+                                <input type="text" class="form-control txt-height" id="txtService_@x" onkeyup="Expert.Application.textCounter(this,'remainings_@x');" @required value="@desc">
+                                <div class="invalid-feedback">يجب إدخال هذا الحقل</div>
+                                <span style="float:left" id="remainings_@x"></span>
+
+                            </td>
+                        </tr>
+
+                    }
+
+                 
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>

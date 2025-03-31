@@ -1,0 +1,244 @@
+﻿@model ApplicationForm;
+@{
+    // var code = "Fourth";
+    // var userInfo = Html.GetUserinfo();
+    // var showEvalbtn = false;
+    // var totalDegree = 0;
+    // @if (userInfo.UserType == 3 || userInfo.UserType == 2)
+    //     showEvalbtn = true;
+    // List<ApplicationFormEvaluation> ApplicationFormEvaluationLst = new List<ApplicationFormEvaluation>();
+    // List<AttachmentUI> AttachmentLst = new List<AttachmentUI>();
+    // if (Model != null && Model.ApplicationFormEvaluationLst.Count > 0)
+    // {
+    //     ApplicationFormEvaluationLst = Model.ApplicationFormEvaluationLst.Where(x => x.Code == code).ToList();
+    //     //AttachmentLst = Model.AttachmentLst.Where(x => x.Code == code).ToList();
+    // }
+    // if (Model != null && Model.AttachmentLst.Count > 0)
+    // {
+    //     AttachmentLst = Model.AttachmentLst.Where(x => x.Code == code).ToList();
+    // }
+    // List<ApplicationEvaluation> ApplicationEvaluationLst = new List<ApplicationEvaluation>();
+    // if (Model != null && Model.ApplicationEvaluationLst != null && Model.ApplicationEvaluationLst.Count > 0 && showEvalbtn)
+    // {
+    //     ApplicationEvaluationLst = Model.ApplicationEvaluationLst.Where(x => x.Code == code).ToList();
+    // }
+    // var evalView = new ApplicationFormEvaluationView();
+    var userInfo = Html.GetUserinfo();
+    var disabled = "";
+    if (Model.MainInformation.ApplicationFormStatus != "InProgress" || !string.IsNullOrEmpty(ViewBag.Id) || userInfo.UserType != 1)
+    {
+        disabled = "display:none";
+    }
+
+}
+<div class="dashboard-main-body bg-base droid-arabic-kufi container">
+
+    <div class="row gy-4">
+        <div class="col-lg-12">
+            <div class=" text-center heder-forms ">
+                <h5 class="text-white">لمهارات الشخصية</h5>
+            </div>
+            <div class=" form-porder ">
+                <div class="card-body row gy-3">
+                    <label class="form-label">اللغات </label>
+                    <div class="col-md-12">
+
+                    <div class="table-responsive scroll-sm">
+                        <div class="table-center">
+                            <div class="scroll-container" data-simplebar>
+                                <table id="Language-table">
+                                    <thead>
+                                        <tr>
+                                            <th width="10%" style="text-align: center; ">#</th>
+                                            <th width="30%" style="text-align: center; ">اللغة</th>
+                                            <th width="20%" style="text-align: center; ">المستوى</th>
+                                            <th width="30%" style="text-align: center; ">ملاحظات</th>
+                                            <th width="10%" style="text-align: center; ">
+                                              
+                                                <div style="@disabled">
+                                                    <button type="button" id="addRow" class="radius-8 d-inline-flex align-items-center gap-1">
+                                                        <iconify-icon icon="simple-line-icons:plus" class="text-xl"></iconify-icon>
+                                                        إضافة
+                                                    </button>
+                                                </div>
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.languageLst)
+                                        {
+                                            <tr data-id="@item.Id">
+                                                <td width="10%" data-label="#">@item.Number</td>
+                                                <td width="30%" data-label="اللغة">
+                                                  
+                                                        <span class="">@item.Name</span>
+                                                    
+                                                  
+                                                </td>
+                                                <td width="20%" data-label="المستوى">
+
+                                                    <span class="">@item.LevelName</span>
+
+
+                                                </td>
+                                                <td width="20%" data-label="ملاحظات">
+                                                    <span class="">@item.Notes</span>
+                                                </td>
+                                                <td width="10%" data-label="اضافة">
+                                                    <button type="button" class="remove-row" style="@disabled">
+                                                        <iconify-icon icon="ic:twotone-close" class="text-danger-main text-xl"></iconify-icon>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                        @* <div class="table-responsive scroll-sm"> *@
+                        @*     <table class="table bordered-table text-sm" id="Language-table"> *@
+                        @*         <thead> *@
+                        @*             <tr> *@
+                        @*                 <th scope="col" class="text-sm">#</th> *@
+                        @*                 <th scope="col" class="text-sm">اللغة</th> *@
+                        @*                 <th scope="col" class="text-sm">المستوى</th> *@
+                        @*                 <th scope="col" class="text-sm">ملاحظات</th> *@
+                        @*                 <th scope="col" class="text-center text-sm"></th> *@
+                        @*             </tr> *@
+                        @*         </thead> *@
+                        @*         <tbody id="tbllanguages"> *@
+                        @*             @foreach (var item in Model.languageLst) *@
+                        @*             { *@
+                        @*                 <tr data-id="@item.Id"> *@
+                        @*                     <td>@item.Number</td> *@
+                        @*                     <td>@item.Name</td> *@
+                        @*                     <td>@item.LevelName</td> *@
+                        @*                     <td>@item.Notes</td> *@
+                        @*                     <td class="text-center"> *@
+                        @*                         <button type="button" class="remove-row" style="@disabled"><iconify-icon icon="ic:twotone-close" class="text-danger-main text-xl"></iconify-icon></button> *@
+                        @*                     </td> *@
+                        @*                 </tr> *@
+                        @*             } *@
+                        @*         </tbody> *@
+                        @*     </table> *@
+                        @* </div> *@
+
+                        @* <div style="text-align:left;@disabled"> *@
+                        @*     <button type="button" id="addRow" class="btn btn-sm btn-primary-600 radius-8 d-inline-flex align-items-center gap-1"> *@
+                        @*         <iconify-icon icon="simple-line-icons:plus" class="text-xl"></iconify-icon> *@
+                        @*         إضافة *@
+                        @*     </button> *@
+                        </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">مهارات استخدام الحاسب  </label>
+
+                        <div class="table-responsive scroll-sm">
+                            <div class="table-center">
+                                <div class="scroll-container" data-simplebar>
+                                    <table id="Language-table">
+                                        <thead>
+                                            <tr>
+                                                <th width="10%" style="text-align: center; ">#</th>
+                                                <th width="30%" style="text-align: center; ">المهارة</th>
+                                                <th width="20%" style="text-align: center; ">المستوى</th>
+                                                <th width="30%" style="text-align: center; ">ملاحظات</th>
+                                                <th width="10%" style="text-align: center; ">
+                                                    <div style="@disabled">
+                                                        <button type="button" id="addRowComputer" class="radius-8 d-inline-flex align-items-center gap-1">
+                                                            <iconify-icon icon="simple-line-icons:plus" class="text-xl"></iconify-icon>
+                                                            إضافة
+                                                        </button>
+                                                    </div>
+                                                   
+
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.ComSkillsLst)
+                                            {
+                                                <tr data-id="@item.Id">
+                                                    <td width="10%" data-label="#">@item.Number</td>
+                                                    <td width="30%" data-label=" : المهارة">
+
+                                                        <span class="">@item.Name</span>
+
+
+                                                    </td>
+                                                    <td width="20%" data-label=" : المستوى">
+
+                                                        <span class="">@item.LevelName</span>
+
+
+                                                    </td>
+                                                    <td width="20%" data-label=" : ملاحظات">
+                                                        <span class="">@item.Notes</span>
+                                                    </td>
+                                                    <td width="10%" data-label=" : اضافة">
+                                                        <button type="button" class="remove-row" style="@disabled"><iconify-icon icon="ic:twotone-close" class="text-danger-main text-xl"></iconify-icon></button>
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        @* <div class="table-responsive scroll-sm"> *@
+                        @*     <table class="table bordered-table text-sm" id="ComputerSkills-table"> *@
+                        @*         <thead> *@
+                        @*             <tr> *@
+                        @*                 <th scope="col" class="text-sm">#</th> *@
+                        @*                 <th scope="col" class="text-sm">المهارة</th> *@
+                        @*                 <th scope="col" class="text-sm">المستوى</th> *@
+                        @*                 <th scope="col" class="text-sm">ملاحظات</th> *@
+                        @*                 <th scope="col" class="text-center text-sm"></th> *@
+                        @*             </tr> *@
+                        @*         </thead> *@
+                        @*         <tbody id="tblComputerSkills"> *@
+                        @*             @foreach (var item in Model.ComSkillsLst) *@
+                        @*             { *@
+                        @*                 <tr data-id="@item.Id"> *@
+                        @*                     <td>@item.Number</td> *@
+                        @*                     <td>@item.Name</td> *@
+                        @*                     <td>@item.LevelName</td> *@
+                        @*                     <td>@item.Notes</td> *@
+                        @*                     <td class="text-center"> *@
+                        @*                         <button type="button" class="remove-row" style="@disabled"><iconify-icon icon="ic:twotone-close" class="text-danger-main text-xl"></iconify-icon></button> *@
+                        @*                     </td> *@
+                        @*                 </tr> *@
+                        @*             } *@
+                        @*         </tbody> *@
+                        @*     </table> *@
+                        @* </div> *@
+
+                        @* <div style="text-align:left;@disabled"> *@
+                        @*     <button type="button" id="addRowComputer" class="btn btn-sm btn-primary-600 radius-8 d-inline-flex align-items-center gap-1"> *@
+                        @*         <iconify-icon icon="simple-line-icons:plus" class="text-xl"></iconify-icon> *@
+                        @*         إضافة *@
+                        @*     </button> *@
+                        @* </div> *@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/Table.Language.js"></script>
+<script src="~/js/Table.ComputerSkills.js"></script>
+

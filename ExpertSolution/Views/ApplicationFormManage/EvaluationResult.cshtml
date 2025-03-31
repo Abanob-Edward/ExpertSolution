@@ -1,0 +1,113 @@
+﻿@model List<ApplicationFormUI>;
+@inject IEvaluationDAO _EvaluationDAO;
+
+@{
+    ViewData["Title"] = "نتائج تقييم المشاركين";
+    List<ApplicationFormUI> lstEvaluators = new List<ApplicationFormUI>();
+    if (Model.Count > 0)
+    {
+        lstEvaluators = _EvaluationDAO.GetEvaluators(Model[0].EvaluatorGroupId);
+    }
+}
+
+<link href="~/assets/dataTables/dataTables.bootstrap4.css" rel="stylesheet">
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body mt-3">
+                <div class="table-responsive">
+                    <table id="file_export" class="table table-striped table-bordered display">
+                        <thead>
+                            <tr>
+                                <th>اسم المؤسسة/الجمعية</th>
+                                <th>الدولة</th>
+                                <th>حجم المؤسسة</th>
+                                <th>رقم الهاتف الرئيسي</th>
+                                <th> البريد الإلكتروني</th>
+                                <th>مسؤول الاتصال</th>
+                                @foreach (var item in lstEvaluators)
+                                {
+                                    <th>@item.ContactFullName</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="/ApplicationForm?id=@item.GUID" target="_blank">
+                                            @item.JobTitle
+                                        </a>
+                                    </td>
+                                    <td>@item.CountryName</td>
+                                  @*   <td>
+                                        @if (item.OrganizationSize == 1)
+                                        {
+                                            <span class="badge border-primary border-1 text-primary">مؤسسة كبيرة</span>
+                                        }
+                                        else if (@item.OrganizationSize == 3)
+                                        {
+                                            <span class="badge border-primary border-1 text-secondary">مؤسسة صغيرة</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge border-primary border-1 text-info">مؤسسة متوسطة</span>
+                                        }
+
+
+                                    </td> *@
+                                    @* <td>@item.OrganizationPhone</td> *@
+                                    <td>@item.Email</td>
+                                    <td>@item.ContactFullName</td>
+                                    @foreach (var eval in lstEvaluators)
+                                    {
+                                        <td>
+                                            <a href="/ApplicationForm?id=@item.GUID&Evaluator=@eval.GUID" target="_blank">
+                                            @{
+                                                var result = _EvaluationDAO.GetEvaluationSummery(eval.GUID, item.GUID);
+                                                @if (result.EvalautionStatus == "Finished")
+                                                {
+                                                    //<span class="badge bg-success">انتهت </span>
+                                                }
+                                                else if (result.EvalautionStatus == "InProgress")
+                                                {
+                                                    <span class="badge bg-primary">قيد التقييم</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-warning">لم تبدأ</span>
+                                                }
+                                                if (result != null && result.Degree > 0)
+                                                {
+                                                @result.Degree 
+                                                }
+                                            }
+                                            </a>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/datatables/datatables.min.js"></script>
+<script src="~/assets/datatables/dataTables.buttons.min.js"></script>
+<script src="~/assets/datatables/buttons.flash.min.js"></script>
+<script src="~/assets/datatables/jszip.min.js"></script>
+<script src="~/assets/datatables/pdfmake.min.js"></script>
+<script src="~/assets/datatables/vfs_fonts.js"></script>
+<script src="~/assets/datatables/buttons.html5.min.js"></script>
+<script src="~/assets/datatables/buttons.print.min.js"></script>
+<script src="~/assets/datatables/datatable-advanced.init.js"></script>
+<script src="~/js/Expert.ApplicationManage.js"></script>
+
+
+
+

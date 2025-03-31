@@ -1,0 +1,83 @@
+﻿@using ExpertSolution.Extensions;
+@inject IApplicationFormDAO _applicationFormDAO
+@model List<ApplicationFormCount>;
+@{
+    ViewData["Title"] = " المشاركين حسب الدول";
+}
+<link href="~/assets/dataTables/dataTables.bootstrap4.css" rel="stylesheet">
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body mt-3">
+                <div class="table-responsive">
+                    <table id="file_export" class="table table-striped table-bordered display">
+                        <thead>
+                            <tr>
+                                <th>الدولة</th>
+                                <th>حجم المؤسسة</th>
+                                <th>إجمالى المقبولة</th>
+                                <th>إجمالى المنتهية</th>
+                                <th>إجمالى قيد التسجيل</th>
+                              @*  <th>إجمالى الملغية</th>*@
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>@item.CountryName</td>
+                                    <td>
+                                        @if (item.OrganizationSize == 1)
+                                        {
+                                            <span class="badge border-primary border-1 text-primary">مؤسسة كبيرة</span>
+                                        }
+                                        else if (@item.OrganizationSize == 3)
+                                        {
+                                            <span class="badge border-primary border-1 text-secondary">مؤسسة صغيرة</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge border-primary border-1 text-info">مؤسسة متوسطة</span>
+                                        }
+
+
+                                    </td>
+                                    <td><a href="@Url.Action("index","ApplicationFormManage", new { Status ="Accepted",CountryId=item.CountryId,OrganizationSize=item.OrganizationSize})">@item.Accepted</a></td>
+                                    <td>
+                                        <a href="@Url.Action("index","ApplicationFormManage", new { Status ="Finished",CountryId=item.CountryId,OrganizationSize=item.OrganizationSize})">@item.Finished</a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("index","ApplicationFormManage", new { Status ="InProgress",CountryId=item.CountryId,OrganizationSize=item.OrganizationSize})"> @item.InProgress</a>
+                                    </td>
+                                   @* <td>
+                                        <a href="@Url.Action("index","ApplicationFormManage", new { Status ="Cancelled",CountryId=item.CountryId,OrganizationSize=item.OrganizationSize})"> @item.Cancelled</a>
+
+                                    </td>*@
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/datatables/datatables.min.js"></script>
+<script src="~/assets/datatables/dataTables.buttons.min.js"></script>
+<script src="~/assets/datatables/buttons.flash.min.js"></script>
+<script src="~/assets/datatables/jszip.min.js"></script>
+<script src="~/assets/datatables/pdfmake.min.js"></script>
+<script src="~/assets/datatables/vfs_fonts.js"></script>
+<script src="~/assets/datatables/buttons.html5.min.js"></script>
+<script src="~/assets/datatables/buttons.print.min.js"></script>
+<script src="~/assets/datatables/datatable-advanced.init.js"></script>
+<script src="~/js/Expert.ApplicationManage.js"></script>
+
+
+
+

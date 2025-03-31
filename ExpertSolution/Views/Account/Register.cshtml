@@ -1,0 +1,285 @@
+﻿@inject ICommonDAO _CommonDAO;
+@{
+    ViewData["Title"] = " مبادرة اعتماد الخبراء  في مجال التواصل والعلاقات العامة ";
+    Layout = "_OuterLayoutWithoutImage";
+    //var countyLst = _CommonDAO.GetCountry();
+}
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+</script>
+<script type="text/javascript">
+    var onloadCallback = function () {
+        grecaptcha.render('google_recaptcha', {
+            'sitekey': '6Lf1C0wqAAAAAGPQCWJe06e0c_-y7Mdfclh2uUQI',
+            'callback': function (response) {
+                $('#recaptcha').hide();
+            }
+        });
+    };
+</script>
+<style>
+  
+
+    #password_rules ul li {
+        /*font-size: 12px;
+                                    font-weight: normal;*/
+        color: #000000;
+        display: inline;
+    }
+
+        #password_rules ul li.complete {
+            color: #5DB406;
+        }
+
+    span.togglePassword {
+        color: gray;
+        font-size: 12px;
+        cursor: pointer;
+    }
+</style>
+<div class=" mx-auto w-75  droid-arabic-kufi">
+    <div class="logo-login">
+        <a href="index.html" class="mb-40 max-w-290-px">
+            <img src="~/assets/images/logo.png" alt="">
+        </a>
+    </div>
+    <div>
+
+        @* <h4 class="mb-12">@ViewData["Title"]</h4> *@
+        <br />
+        <p class="mb-4 text-secondary-light ">مرحبا بك، يرجى ادخال البيانات الأساسية لإنشاء حساب جديد:</p>
+    </div>
+    <form class="needs-validation" novalidate onsubmit="return false;">
+        <div class="card-body row gy-3">
+            <div class="col-md-6 icon-field mb-2">
+                <div class="position-relative ">
+                    <div class="icon-field">
+                <span class="icon top-50 translate-middle-y">
+                    <iconify-icon icon="f7:person"></iconify-icon>
+                </span>
+                <input type="text" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="الاسم الأول" id="txtFirstName" required>
+                <div class="invalid-feedback"> يجب إدخال الاسم الأول</div>
+            </div>
+                </div>
+            </div>
+            <div class="col-md-6 icon-field mb-2">
+                <div class="position-relative ">
+                    <div class="icon-field">
+                <span class="icon top-50 translate-middle-y">
+                    <iconify-icon icon="f7:person"></iconify-icon>
+                </span>
+                <input type="text" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="الاسم الأخير" id="txtLastName" required>
+                <div class="invalid-feedback"> يجب إدخال الاسم الأخير</div>
+            </div>
+                </div>
+            </div>
+            @*  <div class="icon-field mb-2">
+            <span class="icon top-50 translate-middle-y">
+            <iconify-icon icon="mage:flag"></iconify-icon>
+            </span>
+            <select class="form-select h-56-px bg-neutral-50 radius-12 " style="padding-right: 40px;    padding-top: 13px;" id="selectCountryId" required>
+            <option value="">الدولة</option>
+            @foreach (var obj in countyLst)
+            {
+            <option value="@obj.Id">@obj.Name.Trim()</option>
+            }
+            </select>
+            <div class="invalid-feedback">يجب اختيار الدولة </div>
+
+            </div> *@
+            <div class="col-md-6  icon-field mb-2" style="margin-top:20px">
+                @*   <span class="icon top-50 translate-middle-y">
+                <iconify-icon icon="mage:phone"></iconify-icon>
+                </span> *@
+                @* <input type="text" class="form-control h-56-px bg-neutral-50 radius-12" id="txtPhone" placeholder="رقم الهاتف" required> *@
+                <input id="phone" name="phone" type="tel" value="" class="form-control bg-neutral-50 radius-12" required style="height:60px;padding-left:35px;text-align:end;direction:ltr" />
+                <div class="invalid-feedback"> يجب إدخال رقم الهاتف</div>
+
+            </div>
+            <div class="col-md-6  icon-field mb-2">
+                <div class="position-relative ">
+                    <div class="icon-field">
+                        <span class="icon top-50 translate-middle-y">
+                            <iconify-icon icon="mage:email"></iconify-icon>
+                        </span>
+                        <input type="email" class="form-control h-56-px bg-neutral-50 radius-12" id="txtEmail" placeholder="البريد الإلكتروني" required>
+                        <div class="invalid-feedback">يجب إدخال البريد إلكترونى </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6  mb-2">
+                <div class="position-relative ">
+                    <div class="icon-field">
+                        <span class="icon top-50 translate-middle-y">
+                            <iconify-icon icon="solar:lock-password-outline"></iconify-icon>
+                        </span>
+                        <input type="password" class="form-control h-56-px bg-neutral-50 radius-12" pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$" id="txtPassword" onkeyup="validateInputs()" name="txtPassword" placeholder="كلمة المرور" required>
+                        @*   <div class="invalid-feedback">يجب إدخال كلمة المرور على الاقل 6 حروف</div> *@
+
+                    </div>
+                    <span style="margin-inline-end:42px !important; top:30% !important" class="toggle-password ri-eye-line cursor-pointer position-absolute end-0 text-secondary-light" data-toggle="#txtPassword"></span>
+                    <div id="password_rules">
+                        <ul>
+                            <li class="password_length">6</li>
+                            <li class="password_length">حروف على الأقل تحتوى على </li>
+                            <li class="password_uppercase">حرف واحد كبير</li>
+                            <li class="password_number"> ،رقم واحد على الاقل. </li>
+                            @* <li class="password_match">مطابقة كلمة المرور.</li> *@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position-relative ">
+                    <div class="icon-field" style="    margin-bottom: -19px !important;">
+                        <span class="icon top-50 translate-middle-y">
+                            <iconify-icon icon="solar:lock-password-outline"></iconify-icon>
+                        </span>
+                        <input type="password" class="form-control h-56-px bg-neutral-50 radius-12" minlength="6" id="txtRePassword" onkeyup="validateInputs()" name="txtRePassword" placeholder="إعادة كلمة المرور" required>
+                        <div class="invalid-feedback">يجب إعادة إدخال كلمة المرور</div>
+                        <output name="result" style="color:green"></output>
+
+                    </div>
+                    <span style="margin-inline-end:42px !important; top:23% !important" class="toggle-password ri-eye-line cursor-pointer position-absolute end-0 text-secondary-light" data-toggle="#txtPassword"></span>
+                   
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div id="google_recaptcha"></div>
+                    <div class="invalid-feedback" id="recaptcha" style="display:none">
+                        برجاء الضغط على إعادة التحقق من انك لست روبوت
+                    </div>
+                   
+                </div>
+                <div class="col-6">
+                    <div class="d-flex justify-content-between gap-2">
+                        <div class="form-check style-check d-flex align-items-start">
+                            <input class="form-check-input border border-neutral-300 mt-4" type="checkbox" value="" id="condition" required>
+                            <label class="form-check-label" for="condition">
+                                <p>
+                                    للإنشاء حساب يرجى الموافقة على الشروط والأحكام الخاصة بالنظام
+
+                                </p>
+                                <a href="terms" target="_blank" class="text-primary-600 fw-semibold">الشروط والأحكام</a>
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            
+            <div class="col-12">
+                <div class=" text-center">
+                    <button class="btn btnMore text-sm radius-12 mt-32" id="sendform" onclick="Expert.Account.Save();" disabled="disabled"> انشىء حساب</button>
+                    <p class="mb-0">هل لديك حساب؟ <a href="@Url.Action("Login", "Account")" class="text-primary-600 fw-semibold">دخول</a></p>
+
+                </div>
+            </div>
+            
+        </div>
+        
+    </form>
+</div>
+<script>
+    var checker = document.getElementById('condition');
+    var sendbtn = document.getElementById('sendform');
+    // when unchecked or checked, run the function
+    checker.onchange = function () {
+
+        enablebtn();
+    }
+    function enablebtn() {
+        var password = $('#txtPassword').val(),
+            conf = $('#txtRePassword').val();
+        if (document.getElementById('condition').checked && password == conf && password != '') {
+            sendbtn.disabled = false;
+        } else {
+            sendbtn.disabled = true;
+        }
+    }
+</script>
+<script src="~/Phone/js/intlTelInputWithUtils.js"></script>
+<script>
+    const input = document.querySelector("#phone");
+    const iti = window.intlTelInput(input, {
+        // allowDropdown: false,
+        // autoPlaceholder: "off",
+        // containerClass: "test",
+        // countryOrder: ["jp", "kr"],
+        // countrySearch: false,
+        // customPlaceholder: function(selectedCountryPlaceholder, selectedCountryData) {
+        //   return "e.g. " + selectedCountryPlaceholder;
+        // },
+        // dropdownContainer: document.querySelector('#custom-container'),
+        // excludeCountries: ["us"],
+        // fixDropdownWidth: false,
+        // formatAsYouType: false,
+        // formatOnDisplay: false,
+        // geoIpLookup: function(callback) {
+        //   fetch("https://ipapi.co/json")
+        //     .then(function(res) { return res.json(); })
+        //     .then(function(data) { callback(data.country_code); })
+        //     .catch(function() { callback(); });
+        // },
+        // hiddenInput: () => "phone_full",
+        // i18n: { 'de': 'Deutschland' },
+        initialCountry: "eg",
+        // nationalMode: false,
+        onlyCountries: ['eg', 'qa', 'sa', 'eh', 'ae', 'bh', 'om', 'kw', 'jo', 'sy', 'tn', 'ly', 'ps', 'dz', 'mr', 'lb', 'sd', 'iq', 'ye', 'dj', 'so', 'km'],
+        //placeholderNumberType: "MOBILE",
+        // showFlags: false,
+        // separateDialCode: true,
+        // strictMode: true,
+        // useFullscreenPopup: true,
+        // utilsScript: "/build/js/utils.js", // leading slash (and http-server) required for this to work in chrome
+        // validationNumberType: null,
+    });
+    window.iti = iti; // useful for testing
+</script>
+<script>
+
+    function validateInputs() {
+        var password = $('#txtPassword').val(),
+            conf = $('#txtRePassword').val(),
+            all_pass = true;
+
+        var uppercase = password.match(/[A-Z]/),
+            number = password.match(/[0-9]/);
+
+        if (password.length < 6) {
+            $('.password_length').removeClass('complete');
+            all_pass = false;
+        } else {
+            $('.password_length').addClass('complete')
+
+        }
+
+        if (uppercase) $('.password_uppercase').addClass('complete');
+        else {
+            $('.password_uppercase').removeClass('complete');
+            all_pass = false;
+
+        }
+
+        if (number) $('.password_number').addClass('complete');
+        else {
+            $('.password_number').removeClass('complete');
+            all_pass = false
+        }
+
+        if (password == conf && password != '') {
+            $('.password_match').addClass('complete');
+        }
+        else {
+            $('.password_match').removeClass('complete')
+            all_pass = false;
+        }
+        enablebtn();
+
+    }
+
+</script>

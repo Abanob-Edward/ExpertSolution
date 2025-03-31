@@ -1,0 +1,116 @@
+﻿@model DataTable;
+@{
+    //var userInfo = Html.GetUserinfo();
+    ViewData["Title"] = "نتائج تقييم المشاركين";
+    //ApplicationForm _applicationForm = new ApplicationForm();
+    //_applicationForm = _applicationFormDAO.GetApplicationInfo(userInfo.GUID);
+    //var disabled = "";
+    //if (_applicationForm.MainInformation.ApplicationFormStatus != "InProgress")
+    //{
+    //    disabled = "display:none";
+    //}
+}
+<link href="~/assets/dataTables/dataTables.bootstrap4.css" rel="stylesheet">
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body mt-3">
+                <div class="table-responsive">
+                    <table id="file_export" class="table table-striped table-bordered display">
+                        <thead>
+                            <tr>
+                                <th>اسم المؤسسة/الجمعية</th>
+                                <th>الدولة</th>
+                                <th>المدينة/المحافظة</th>
+                                <th>حجم المؤسسة</th>
+                                <th>رقم الهاتف الرئيسي</th>
+                                <th> البريد الإلكتروني</th>
+                                <th>مسؤول الاتصال</th>
+                                <th>@Model.Columns[1].ToString()</th>
+                                <th>@Model.Columns[2].ToString()</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow item in Model.Rows)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="/ApplicationForm?id=@item[0].ToString()" target="_blank">
+                                            @item[3].ToString()
+                                        </a>
+                                    </td>
+                                    <td>  @item[4].ToString()</td>
+                                    <td>  @item[6].ToString()</td>
+                                    <td>
+                                        @if (@item[5].ToString() == "1")
+                                        {
+                                            <span class="badge border-primary border-1 text-primary">مؤسسة كبيرة</span>
+                                        }
+                                        else if (@item[5].ToString() == "3")
+                                        {
+                                            <span class="badge border-primary border-1 text-secondary">مؤسسة صغيرة</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge border-primary border-1 text-info">مؤسسة متوسطة</span>
+                                        }
+
+
+                                    </td>
+                                    <td>  @item[7].ToString()</td>
+                                    <td>  @item[8].ToString()</td>
+                                    <td>  @item[9].ToString()</td>
+                                    @for (int i = 1; i <= 2; i++)
+                                    {
+                                        var reulst = @item[i].ToString();
+                                        var EvaluatorName = @Model.Columns[1].ToString();
+                                        if (i == 2)
+                                        {
+                                            EvaluatorName = @Model.Columns[2].ToString();
+                                        }
+                                        <td>
+                                            <a href="/ApplicationForm?id=@item[0].ToString()&Evaluator=@EvaluatorName" target="_blank">
+                                                @if (reulst == "Finished")
+                                                {
+                                                    <span class="badge bg-success">انتهت </span>
+                                                }
+                                                else if (reulst == "InProgress")
+                                                {
+                                                    <span class="badge bg-primary">قيد التسجيل</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-warning">لم تبدأ</span>
+                                                }
+                                            </a>
+                                        </td>
+                                    }
+
+
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/datatables/datatables.min.js"></script>
+<script src="~/assets/datatables/dataTables.buttons.min.js"></script>
+<script src="~/assets/datatables/buttons.flash.min.js"></script>
+<script src="~/assets/datatables/jszip.min.js"></script>
+<script src="~/assets/datatables/pdfmake.min.js"></script>
+<script src="~/assets/datatables/vfs_fonts.js"></script>
+<script src="~/assets/datatables/buttons.html5.min.js"></script>
+<script src="~/assets/datatables/buttons.print.min.js"></script>
+<script src="~/assets/datatables/datatable-advanced.init.js"></script>
+<script src="~/js/Expert.ApplicationManage.js"></script>
+@await Html.PartialAsync("_Action")
+
+
+

@@ -1,0 +1,89 @@
+﻿@model ApplicationFormEvaluationView
+
+@{
+    var txt = "";
+    var atext = "";
+    var aurl = "#";
+    var divdisplay = "display:none";
+    var radioyescheced = "";
+    var radionoscheced = "";
+    if (Model.Code == "First")
+    {
+        txt = "خطة استراتيجية للمؤسسة/الجمعية (الإطار الاستراتيجي فقط).	";
+    }
+    else if (Model.Code == "Third")
+    {
+        txt = " مثال مذكرة تفاهم/اتفاقية مع الشركاء والداعمين.";
+    }
+    else if (Model.Code == "Fourth")
+    {
+        txt = " مثال لمعززات الإعلان والترويج والتعريف بالخدمات.";
+    }
+    else if (Model.Code == "Five")
+    {
+        txt = "مستند يبرهن مسعى المؤسسة لدعم الإبداع والاستفادة من التكنولوجيا الحديثة والاحتفاظ بالمعرفة.";
+    }
+
+    if (Model.AttachmentLst != null && Model.AttachmentLst.Count > 0)
+    {
+        var attachobj = Model.AttachmentLst[0];
+        atext = attachobj.DisplayName;
+        aurl = "Uploads/" + attachobj.Name;
+        divdisplay = "";
+        radioyescheced = "checked";
+    }
+    else
+    {
+        radionoscheced = "checked";
+    }
+}
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered border-primary">
+                <tdead>
+                    <tr class="rowHeader">
+                        <th scope="col" width="20px"> <h4>م</h4></th>
+                        <th scope="col" width="30%"> <h4>اسم المرفق</h4></th>
+                        <th scope="col" width="40%"> <h4>مرفق</h4></th>
+                        <th scope="col"> <h4>غير موجود</h4></th>
+                    </tr>
+                </tdead>
+                <tbody>
+                    <tr>
+                        <td scope="row" class="vertical-align-middle"> 1</td>
+                        <td scope="row" class="vertical-align-middle">
+                            @txt
+                        </td>
+                        <td scope="row" class="vertical-align-middle">
+                            <div class="form-check text-center">
+                                <input class="form-check-input form-check-input-right" type="radio" name="radioFile_@Model.Code" value="1" style="margin-top:10px;margin-bottom:10px" onclick="Expert.Attachment.checkAnswer(this,'@Model.Code');" @radioyescheced>
+                                <div class="float-end" style="margin-right:20px;@divdisplay" id="divEvalAttach_@Model.Code">
+                                    <input type="file" name="AttachmentFile@('_'+Model.Code)" id="AttachmentFile@('_'+Model.Code)" class="attachwidth"
+                                           onchange="Expert.Attachment.Save('@Model.Code')"
+                                           accept=".png, .jpg, .jpeg, .doc, .docx, .pdf, .xls, .xlsx, .ppt, .pptx, .gif" />
+                                    <br />
+                                    <span class="float-start" style="margin-top:15px;margin-right:30px">
+                                        <a id="AttachmentName@('_'+Model.Code)" href="@aurl" class="m-10" target="_blank">@atext </a>
+                                    </span>
+                                    <span style="margin-top:15px;margin-right:-40px">
+                                        حجم الملف المسموح به يجب أن لا يتجاوز 10 ميجا بايت
+                                    </span>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                        </td>
+                        <td scope="row" class="vertical-align-middle">
+                            <div class="form-check">
+                                <input class="form-check-input form-check-input-right" type="radio" name="radioFile_@Model.Code" value="0" onclick="Expert.Attachment.checkAnswer(this,'@Model.Code');" @radionoscheced>
+                            </div>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>

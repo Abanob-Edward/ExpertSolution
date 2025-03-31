@@ -1,0 +1,79 @@
+.rightcolumnwidth {
+    width: 25%;
+}
+
+.rowHeader {
+    background-color: #4e748c;
+    color: white;
+}
+
+.form-check-input-right {
+    float: right !important;
+}
+
+.vertical-align-middle {
+    vertical-align: middle;
+}
+
+.cust-col-sm-2 {
+    width: 0.666% !important;
+    flex: 0 0 auto;
+}
+
+.cust-col-sm-10 {
+    width: 95.333333% !important;
+    flex: 0 0 auto;
+}
+
+.padding-top-10 {
+    padding-top: 10px
+}
+
+.txt-height {
+    height: 50px !important;
+}
+.btn {
+    font-weight: bold;
+    font-size: larger;
+}
+.attachwidth
+{
+    width:100%;
+}
+
+@media (min-width: 1200px) {
+    .attachwidth {
+        width: 200px;
+    }
+}
+
+.text-danger {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.25em;
+}
+
+.card {
+    border: 1px solid #e0e0e0; /* Light gray border for cards */
+}
+
+
+/* Reduce Button Size */
+.btn-primary {
+    padding: 0.5rem 1.5rem; /* Adjust padding */
+    font-size: 1rem; /* Adjust font size */
+}
+
+/* Align Question Content and Radio Buttons */
+.card-bodyn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.card-title {
+    margin-bottom: 0; /* Remove default margin for card title */
+}
+.yesNo{
+    margin-right:10px;
+}

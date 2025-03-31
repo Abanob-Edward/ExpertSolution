@@ -1,0 +1,105 @@
+﻿@using ExpertSolution.Extensions;
+@inject IApplicationFormDAO _applicationFormDAO
+@model List<ApplicationFormUI>;
+@{
+    ViewData["Title"] = "Dashboard";
+    ApplicationFormCount _applicationFormCount = new ApplicationFormCount();
+    List<ApplicationFormCount> _countryCount = new List<ApplicationFormCount>();
+    _applicationFormCount = _applicationFormDAO.GetApplicationFormCount();
+    _applicationFormCount.Total -= _applicationFormCount.Cancelled;
+    _countryCount = _applicationFormDAO.GetApplicationFormCountryTotal();
+}
+
+<div class="row row-cols-xxxl-5 row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-4">
+    <div class="col">
+        <div class="card shadow-none border bg-gradient-start-1 h-90">
+            <div class="card-body p-20">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div>
+                        <p class="fw-medium text-primary-light mb-1">إجمالى الخبراء</p>
+                        <a href="@Url.Action("index", "ApplicationFormManage")">
+                            <h6 class="mb-0">@_applicationFormCount.Total </h6>
+                        </a>
+                    </div>
+                    <div class="w-50-px h-50-px bg-cyan rounded-circle d-flex justify-content-center align-items-center">
+                        <iconify-icon icon="gridicons:multiple-users" class="text-white text-2xl mb-0"></iconify-icon>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- card end -->
+    </div>
+    <div class="col">
+        <div class="card shadow-none border bg-gradient-start-2 h-90">
+            <div class="card-body p-20">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div>
+                        <p class="fw-medium text-primary-light mb-1">تم الدفع</p>
+                        <a href=" @Url.Action("index", "ApplicationFormManage",new { Status ="Paid"})">
+                            <h6 class="mb-0">@_applicationFormCount.Paid</h6>
+                        </a>
+                    </div>
+                    <div class="w-50-px h-50-px bg-purple rounded-circle d-flex justify-content-center align-items-center">
+                        <iconify-icon icon="fa-solid:award" class="text-white text-2xl mb-0"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </div><!-- card end -->
+    </div>
+    <div class="col">
+        <div class="card shadow-none border bg-gradient-start-3 h-90">
+            <div class="card-body p-20">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div>
+                        <p class="fw-medium text-primary-light mb-1">منتهية ولم يتم الدفع</p>
+                        <a href=" @Url.Action("index", "ApplicationFormManage", new { Status ="Finished"})">
+                            <h6 class="mb-0">@_applicationFormCount.Finished</h6>
+                        </a>
+                    </div>
+                    <div class="w-50-px h-50-px bg-info rounded-circle d-flex justify-content-center align-items-center">
+                        <iconify-icon icon="fluent:people-20-filled" class="text-white text-2xl mb-0"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </div><!-- card end -->
+    </div>
+    <div class="col">
+        <div class="card shadow-none border bg-gradient-start-4 h-90">
+            <div class="card-body p-20">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div>
+                        <p class="fw-medium text-primary-light mb-1">جارى التسجيل</p>
+                        <a href=" @Url.Action("index", "ApplicationFormManage",new { Status ="InProgress"})">
+                            <h6 class="mb-0">@_applicationFormCount.InProgress</h6>
+                        </a>
+                    </div>
+                    <div class="w-50-px h-50-px bg-success-main rounded-circle d-flex justify-content-center align-items-center">
+                        <iconify-icon icon="solar:wallet-bold" class="text-white text-2xl mb-0"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </div><!-- card end -->
+    </div>
+    <div class="col">
+        <div class="card shadow-none border bg-gradient-start-5 h-90">
+            <div class="card-body p-20">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div>
+                        <p class="fw-medium text-primary-light mb-1">ملغية</p>
+                        <a href=" @Url.Action("index", "ApplicationFormManage",new { Status ="Cancelled"})">
+                            <h6 class="mb-0">@_applicationFormCount.Cancelled</h6>
+                        </a>
+                    </div>
+                    <div class="w-50-px h-50-px bg-red rounded-circle d-flex justify-content-center align-items-center">
+                        <iconify-icon icon="fa6-solid:file-invoice-dollar" class="text-white text-2xl mb-0"></iconify-icon>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- card end -->
+    </div>
+</div>
+
+
+
+<script src="~/assets/js/lib/apexcharts.min.js"></script>

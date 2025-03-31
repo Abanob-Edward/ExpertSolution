@@ -1,0 +1,27 @@
+﻿@inject ICommonDAO _CommonDAO;
+
+@{
+    var EvaluatorGroupLst = _CommonDAO.GetEvaluatorGroup();
+    }
+    <ul class="sidebar-menu" id="sidebar-menu">
+    <li>
+        <a href="@Url.Action("Dashboard", "ApplicationFormManage")">
+            <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
+            <span>الصفحة الرئيسية</span>
+        </a>
+    </li>
+    <li>
+        <a href="/ApplicationFormManage">
+            <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
+            <span>قائمة الخبراء</span>
+        </a>
+    </li>
+    <li>
+        <a href="@Url.Action("Login", "Account")">
+            <iconify-icon icon="lucide:power" class="menu-icon"></iconify-icon>
+            <span>خروج</span>
+        </a>
+    </li>
+   
+</ul>
+

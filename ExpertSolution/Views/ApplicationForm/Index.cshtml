@@ -1,0 +1,296 @@
+﻿@using ExpertSolution.Extensions;
+@inject IApplicationFormDAO _applicationFormDAO
+
+@{
+    var userInfo = Html.GetUserinfo();
+    var showEvalbtn = false;
+    @if (userInfo.UserType == 3 || userInfo.UserType == 2)
+        showEvalbtn = true;
+    ViewData["Title"] = "التسجيل";
+    ApplicationForm _applicationForm = new ApplicationForm();
+    var applicationFormGUID = "";
+    if (!string.IsNullOrEmpty(ViewBag.Id))
+    {
+        _applicationForm = _applicationFormDAO.GetApplicationInfo(ViewBag.Id, userInfo, ViewBag.Evaluator);
+        applicationFormGUID = ViewBag.Id;
+    }
+    else
+    {
+        _applicationForm = _applicationFormDAO.GetApplicationInfo(userInfo.GUID, userInfo);
+        applicationFormGUID = userInfo.GUID;
+    }
+    var disabled = "";
+    var cntrdisabled = false;
+    if (_applicationForm.MainInformation.ApplicationFormStatus != "InProgress" || !string.IsNullOrEmpty(ViewBag.Id) || userInfo.UserType != 1)
+    {
+        cntrdisabled = true;
+        disabled = "display:none";
+    }
+}
+<link href="~/css/progressstyle.css" rel="stylesheet">
+<link href="~/css/ApplicationForm.css" rel="stylesheet">
+<input type="hidden" id="hiddenUserGUID" value="@applicationFormGUID" data-status="@cntrdisabled" />
+<div class="droid-arabic-kufi container ">
+<div id="progress">
+    <ul id="progress-num" >
+        @for (int i = 1; i <= 6; i++)
+        {
+            var clsactive = "";
+            if (i == 1)
+            {
+                clsactive = "active";
+            }
+
+            <li class="step @clsactive" style="cursor: pointer;" onclick="Expert.Application.NavigationClicked('@i')">
+
+                <div>
+                    @if (i == 1)
+                    {
+                        <p class="" >
+                            البيانات الرئيسية
+                        </p>
+
+
+                    }
+                    else if (i == 2)
+                    {
+                        <p class="" >
+                            المهارات الشخصية
+                        </p>
+
+                    }
+                    else if (i == 3)
+                    {
+                        <p class="" >
+                            المؤهلات الأكاديمية
+
+                        </p>
+
+                    }
+                    else if (i == 4)
+                    {
+                        <p class="" >
+                            الخبرات العملية
+                        </p>
+
+                    }
+                    else if (i == 5)
+                    {
+                        <p class="" >
+                            الشهادات المهنية
+                        </p>
+
+                    }
+                    else if (i == 6)
+                    {
+                        <p class="" >
+                            انهاء التسجيل
+                        </p>
+
+                    }
+                </div>
+
+                @* @if (i == 1) *@
+                @* { *@
+                @*     <p class="form-label" style="min-width:120px !important;margin-right:-50px"> *@
+                @*         البيانات الرئيسية *@
+                @*     </p> *@
+
+
+                @* } *@
+                @* else if (i == 2) *@
+                @* { *@
+                @*     <p class="form-label" style="min-width:120px !important;margin-right:-50px"> *@
+                @*         المهارات الشخصية *@
+                @*     </p> *@
+
+                @* } *@
+                @* else if (i == 3) *@
+                @* { *@
+                @*     <p class="form-label" style="min-width:120px !important;margin-right:-50px"> *@
+                @*         المؤهلات الأكاديمية *@
+
+                @*     </p> *@
+
+                @* } *@
+                @* else if (i == 4) *@
+                @* { *@
+                @*     <p class="form-label" style="min-width:120px !important;margin-right:-50px"> *@
+                @*         الخبرات العملية *@
+                @*     </p> *@
+
+                @* } *@
+                @* else if (i == 5) *@
+                @* { *@
+                @*     <p class="form-label" style="min-width:120px !important;margin-right:-50px"> *@
+                @*         الشهادات المهنية *@
+                @*     </p> *@
+
+                @* } *@
+                @* else if (i == 6) *@
+                @* { *@
+                @*     <p class="form-label" style="min-width:120px !important;margin-right:-50px"> *@
+                @*         انهاء التسجيل *@
+                @*     </p> *@
+
+                @* } *@
+            </li>
+        }
+
+    </ul>
+    <div id="progress-bar"></div>
+
+</div>
+</div>
+
+<div id="divMainInformation" class="divapplicationform droid-arabic-kufi container" name="div1">
+    <form class="needs-validation" novalidate onsubmit="return false;" id="mainform">
+        @await Html.PartialAsync("_Evaluation1", _applicationForm)
+        <div class="row ">
+            @* <div class="col-md-4 "> *@
+            @*     <nav> *@
+            @*         <ol class="breadcrumb" style="float:left"> *@
+            @*             <li class="breadcrumb-item active padding-top-10">صفحة 1 - 6</li> *@
+            @*         </ol> *@
+            @*     </nav> *@
+            @* </div> *@
+            <div class="col-8 text-start">
+                <button class="btn btnNext" onclick="Expert.Application.Next('divMainInformation','divEvaluationFirst')">التالى</button>
+            </div>
+            <div class="col-4 text-end">
+                <button class="btn btnSave" style="@disabled" onclick="Expert.Application.SaveClose('divMainInformation')">حفظ وإغلاق</button>
+
+                </div>
+        </div>
+    </form>
+</div>
+<div id="divEvaluationFirst" style="display:none" class="divapplicationform droid-arabic-kufi container" name="div2">
+    <form class="needs-validation" novalidate onsubmit="return false;" id="EvaluationFirst">
+        @await Html.PartialAsync("_Evaluation2", _applicationForm)
+        <div class="row ">
+            @* <div class="col-md-4 "> *@
+            @*     <nav> *@
+            @*         <ol class="breadcrumb" style="float:left"> *@
+            @*             <li class="breadcrumb-item active padding-top-10">صفحة 2 - 6</li> *@
+            @*         </ol> *@
+            @*     </nav> *@
+            @* </div> *@
+            <div class="col-8 text-start">
+                <button class="btn btnNext" onclick="Expert.Application.Next('divEvaluationFirst','divEvaluationSecond')">التالى</button>
+                <button class="btn btnPrev" onclick="Expert.Application.Previous('divEvaluationFirst','divMainInformation')">السابق</button>
+
+            </div>
+            <div class="col-4 text-end">
+                <button class="btn btnSave" style="@disabled" onclick="Expert.Application.SaveClose('divEvaluationSeven')">حفظ وإغلاق</button>
+
+                </div>
+        </div>
+    </form>
+
+</div>
+<div id="divEvaluationSecond" style="display:none" class="divapplicationform droid-arabic-kufi container" name="div3">
+    <form class="row g-1 needs-validation" novalidate onsubmit="return false;" id="EvaluationSecond">
+        @await Html.PartialAsync("_Evaluation3", _applicationForm)
+        <div class="row ">
+            @* <div class="col-md-4 "> *@
+            @*     <nav> *@
+            @*         <ol class="breadcrumb" style="float:left"> *@
+            @*             <li class="breadcrumb-item active padding-top-10">صفحة 3 - 6</li> *@
+            @*         </ol> *@
+            @*     </nav> *@
+            @* </div> *@
+            <div class="col-8 text-start">
+                <button class="btn btnNext" onclick="Expert.Application.Next('divEvaluationSecond','divEvaluationThird')">التالى</button>
+                <button class="btn btnPrev" onclick="Expert.Application.Previous('divEvaluationSecond','divEvaluationFirst')">السابق</button>
+
+            </div>
+            <div class="col-4 text-end">
+                <button class="btn btnSave" style="@disabled" onclick="Expert.Application.SaveClose('divEvaluationSecond')">حفظ وإغلاق</button>
+
+            </div>
+            </div>
+    </form>
+</div>
+<div id="divEvaluationThird" style="display:none" class="divapplicationform droid-arabic-kufi container" name="div4">
+    <form class="row g-1 needs-validation" novalidate onsubmit="return false;" id="EvaluationThird">
+        @await Html.PartialAsync("_Evaluation4", _applicationForm)
+        <div class="row ">
+            @* <div class="col-md-4 "> *@
+            @*     <nav> *@
+            @*         <ol class="breadcrumb" style="float:left"> *@
+            @*             <li class="breadcrumb-item active padding-top-10">صفحة 4 - 6</li> *@
+            @*         </ol> *@
+            @*     </nav> *@
+            @* </div> *@
+            <div class="col-8 text-start">
+                <button class="btn btnNext" onclick="Expert.Application.Next('divEvaluationThird','divEvaluationFourth')">التالى</button>
+                <button class="btn btnPrev" onclick="Expert.Application.Previous('divEvaluationThird','divEvaluationSecond')">السابق</button>
+
+            </div>
+            <div class="col-4 text-end">
+                <button class="btn btnSave" style="@disabled" onclick="Expert.Application.SaveClose('divEvaluationThird')">حفظ وإغلاق</button>
+
+            </div>
+            </div>
+    </form>
+</div>
+<div id="divEvaluationFourth" style="display:none" class="divapplicationform droid-arabic-kufi container" name="div5">
+    <form class="row g-1 needs-validation" novalidate onsubmit="return false;" id="EvaluationFourth">
+        @await Html.PartialAsync("_Evaluation5", _applicationForm)
+        <div class="row ">
+            @* <div class="col-md-4 "> *@
+            @*     <nav> *@
+            @*         <ol class="breadcrumb" style="float:left"> *@
+            @*             <li class="breadcrumb-item active padding-top-10">صفحة 5 - 6</li> *@
+            @*         </ol> *@
+            @*     </nav> *@
+            @* </div> *@
+            <div class="col-8 text-start">
+                <button class="btn btnNext" onclick="Expert.Application.Next('divEvaluationFourth','divEvaluationFive')">التالى</button>
+                <button class="btn btnPrev" onclick="Expert.Application.Previous('divEvaluationFourth','divEvaluationThird')">السابق</button>
+
+            </div>
+            <div class="col-4 text-end">
+                <button class="btn btnSave" style="@disabled" onclick="Expert.Application.SaveClose('divEvaluationFourth')">حفظ وإغلاق</button>
+
+            </div>
+            </div>
+    </form>
+</div>
+<div id="divEvaluationFive" style="display:none" class="divapplicationform droid-arabic-kufi container" name="div6">
+        @await Html.PartialAsync("_Evaluation6", _applicationForm)
+        <div class="row ">
+            @* <div class="col-md-4 "> *@
+            @*     <nav> *@
+            @*         <ol class="breadcrumb" style="float:left"> *@
+            @*             <li class="breadcrumb-item active padding-top-10">صفحة 6 - 6</li> *@
+            @*         </ol> *@
+            @*     </nav> *@
+            @* </div> *@
+        <div class="col-12 text-center">
+            <button class="btn btn-secondary" onclick="Expert.Application.Previous('divEvaluationFive','divEvaluationFourth')">السابق</button>
+                <button class="btn btn-primary" style="@disabled" onclick="Expert.Application.SaveClose('divEvaluationFive')"> إغلاق</button>
+                <button class="btn" style="background-color:#55913c;@disabled" onclick="Expert.Application.Finish('divEvaluationFive')">إنهاء التسجيل / الدفع الإلكترونى</button>
+                @if (userInfo.UserType == 3)
+                {
+                    <button class="btn " style="background-color:#55913c;" onclick="Expert.Evaluation.FinishEvaluation()">إنهاء التقييم </button>
+
+                }
+            </div>
+        </div>
+    
+</div>
+
+
+<script src="~/js/Expert.Application.js"></script>
+<script src="~/js/Expert.Forms.ProfessionalQualifications.js"></script>
+<script src="~/js/Expert.Forms.AcademicQualifications.js"></script>
+<script src="~/js/Expert.Forms.CertificateQualifications.js"></script>
+<script src="~/js/Expert.Forms.DoYouKnowQuestions.js"></script>
+<script src="~/js/Expert.Attachment.js"></script>
+@if (showEvalbtn)
+{
+    <script src="~/js/Expert.Evaluation.js"></script>
+    @await Html.PartialAsync("_EvaluationAction")
+}
+

@@ -1,0 +1,59 @@
+﻿@model ApplicationEvaluationView;
+@{
+    var evalDegree = "...";
+    var pointDegree = 20;
+    if (Model.Code == "First")
+    {
+        pointDegree = 20;
+    }
+    else if (Model.Code == "Second")
+    {
+        pointDegree = 25;
+    }
+    else if (Model.Code == "Third")
+    {
+        pointDegree = 20;
+    }
+    else if (Model.Code == "Fourth")
+    {
+        pointDegree = 50;
+    }
+    else if (Model.Code == "Fifth")
+    {
+        pointDegree = 20;
+    }
+    else if (Model.Code == "Six")
+    {
+        pointDegree = 20;
+        if (Model.Number == 1 || Model.Number == 2 || Model.Number == 5)
+        {
+            pointDegree = 40;
+        }
+    }
+    else if (Model.Code == "Seven")
+    {
+        pointDegree = 30;
+        if (Model.Number == 7)
+        {
+            pointDegree = 20;
+        }
+    }
+    if (Model.ApplicationEvaluationLst.Count > 0)
+    {
+        var eval = Model.ApplicationEvaluationLst.Where(x => x.Number == Model.Number).FirstOrDefault();
+        if (eval != null && eval.Degree > 0)
+        {
+            evalDegree = eval.Degree.ToString();
+        }
+    }
+    var evaluator = "";
+    if (!string.IsNullOrEmpty(ViewBag.Evaluator))
+    {
+        evaluator = ViewBag.Evaluator;
+    }
+}
+    <td>
+    <button type="button" id="btn@(Model.Code+Model.Number)" class="btn btn-primary" onclick="Expert.Evaluation.ShowActionModal('@Model.Code','@Model.Number','@pointDegree','@evaluator')">
+        @evalDegree
+    </button>
+</td>

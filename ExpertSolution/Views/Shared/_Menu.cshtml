@@ -1,0 +1,33 @@
+﻿<ul class="sidebar-menu" id="sidebar-menu">
+   @*  <li class="dropdown">
+        <a href="javascript:void(0)">
+            <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
+            <span>القائمة الرئيسية</span>
+        </a>
+        <ul class="sidebar-submenu">
+            <li>
+                <a href="@Url.Action("Index", "ApplicationForm")"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> التسجيل</a>
+            </li>
+           
+        </ul>
+    </li> *@
+    <li>
+        <a href="@Url.Action("About", "ApplicationForm")">
+            <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
+            <span>عن المبادرة</span>
+        </a>
+    </li>
+    <li>
+        <a href="@Url.Action("Index", "ApplicationForm")">
+            <iconify-icon icon="heroicons:document" class="menu-icon"></iconify-icon>
+            <span>التسجيل</span>
+        </a>
+    </li>
+    <li>
+        <a href="@Url.Action("Login", "Account")">
+            <iconify-icon icon="lucide:power" class="menu-icon"></iconify-icon>
+            <span>خروج</span>
+        </a>
+    </li>
+   
+</ul>

@@ -1,0 +1,116 @@
+﻿@model ApplicationForm;
+@{
+    // var code = "Third";
+    // var userInfo = Html.GetUserinfo();
+    // var showEvalbtn = false;
+    // var totalDegree = 0;
+    // @if (userInfo.UserType == 3 || userInfo.UserType == 2)
+    //     showEvalbtn = true;
+    // List<ApplicationFormEvaluation> ApplicationFormEvaluationLst = new List<ApplicationFormEvaluation>();
+    // List<AttachmentUI> AttachmentLst = new List<AttachmentUI>();
+    // if (Model != null && Model.ApplicationFormEvaluationLst.Count > 0)
+    // {
+    //     ApplicationFormEvaluationLst = Model.ApplicationFormEvaluationLst.Where(x => x.Code == code).ToList();
+    //     //AttachmentLst =  Model.AttachmentLst.Where(x => x.Code == code).ToList();
+    // }
+    // if (Model != null && Model.AttachmentLst.Count > 0)
+    // {
+    //     AttachmentLst = Model.AttachmentLst.Where(x => x.Code == code).ToList();
+    // }
+    // List<ApplicationEvaluation> ApplicationEvaluationLst = new List<ApplicationEvaluation>();
+    // if (Model != null && Model.ApplicationEvaluationLst != null && Model.ApplicationEvaluationLst.Count > 0 && showEvalbtn)
+    // {
+    //     ApplicationEvaluationLst = Model.ApplicationEvaluationLst.Where(x => x.Code == code).ToList();
+    // }
+    // var evalView = new ApplicationFormEvaluationView();
+
+}
+<div class="dashboard-main-body">
+
+    <div class="row gy-4">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">الشهادات المهنية </h5>
+                </div>
+                <div class="card-body row gy-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">اسم الشهادة</label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtNameCQ" class="form-control" required>
+                        <input type="hidden" id="hiddenCQId" value="" data-status="" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">جهة الإعتماد </label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtplaceCQ" class="form-control" required>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">التاريخ</label>
+                        <span style="color:red;">*</span>
+                        <input type="date" id="txtYearCQ" class="form-control" required style="padding-left:40px !important">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">الدرجة / التقدير</label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtDegreeCQ" class="form-control" required>
+                        
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">المرفقات </label>
+                        <span style="color:red;">*</span>
+                        <input class="form-control form-control-sm" type="file" id="AttachmentFile_CQ" 
+                               accept=".pdf" />
+                        <div class="col-md-2">
+                            <a id="AttachmentName_CQ" href="#" class="m-10" target="_blank"></a>
+                        </div>
+
+                        <div>
+                            حجم الملف المسموح به يجب أن لا يتجاوز 10 ميجا بايت ومن نوع pdf
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">ملاحظات</label>
+                        <textarea name="#0" class="form-control" id="txtNotesCQ" rows="4" cols="50" placeholder="ملاحظات أخرى..."></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary-600" onclick="SaveCertificateQualifications()" type="submit">إضافة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">
+                        قائمة الشهادات المهنية 
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table bordered-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">الشهادة</th>
+                                    <th scope="col">معتمدة من</th>
+                                    <th scope="col">تاريخ</th>
+                                    <th scope="col">الدرجة / التقدير</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblCQ">
+                              
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><!-- card end -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+﻿@model ApplicationForm;
+@inject ICommonDAO _CommonDAO;
+
+@{
+    var lookupLst = _CommonDAO.GetLookup("lookupTrainingType");
+    //var code = "Fourth";
+    //var userInfo = Html.GetUserinfo();
+    // var showEvalbtn = false;
+    // var totalDegree = 0;
+    // @if (userInfo.UserType == 3 || userInfo.UserType == 2)
+    //     showEvalbtn = true;
+    // List<ApplicationFormEvaluation> ApplicationFormEvaluationLst = new List<ApplicationFormEvaluation>();
+    // List<AttachmentUI> AttachmentLst = new List<AttachmentUI>();
+    // if (Model != null && Model.ApplicationFormEvaluationLst.Count > 0)
+    // {
+    //     ApplicationFormEvaluationLst = Model.ApplicationFormEvaluationLst.Where(x => x.Code == code).ToList();
+    // }
+    // if (Model != null && Model.AttachmentLst.Count > 0)
+    // {
+    //     AttachmentLst = Model.AttachmentLst.Where(x => x.Code == code).ToList();
+    // }
+    // List<ApplicationEvaluation> ApplicationEvaluationLst = new List<ApplicationEvaluation>();
+    // if (Model != null && Model.ApplicationEvaluationLst != null && Model.ApplicationEvaluationLst.Count > 0 && showEvalbtn)
+    // {
+    //     ApplicationEvaluationLst = Model.ApplicationEvaluationLst.Where(x => x.Code == code).ToList();
+    // }
+    // var evalView = new ApplicationFormEvaluationView();
+
+}
+<div class="dashboard-main-body">
+
+    <div class="row gy-4">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0"> الخبرات العملية</h5>
+                </div>
+                <div class="card-body row gy-3">
+                    <div class="col-md-6">
+                        <label class="form-label">الاسم</label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtName" class="form-control" required>
+                        <input type="hidden" id="hiddenPQId" value="" data-status="" />
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">النوع  </label>
+                        <span style="color:red;">*</span>
+                        <select class="form-select" id="selectTrainingType" required>
+                            <option value="">--اختر النوع--</option>
+                            @foreach (var obj in lookupLst)
+                            {
+                                <option value="@obj.Id">@obj.Name.Trim()</option>
+                            }
+                        </select>
+
+                    </div>             
+                    <div class="col-md-6">
+                        <label class="form-label"> المكان  </label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtplace" class="form-control" required>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">نوع التقديم </label>
+                        <span style="color:red;">*</span>
+                        <select class="form-select" id="selecttype" required>
+                            <option value="" selected>--اختر نوع التقديم  --</option>
+                            <option  value="1">عن بعد</option>
+                            <option value="2">حضوريا</option>
+                            <option value="3">عن بعد / حضوريا</option>
+                        </select>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label"> المؤسسة المقدم لها الخدمة </label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtOrg" class="form-control" required>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">المرفقات </label>
+                        <span style="color:red;">*</span>
+                        <input class="form-control form-control-sm" type="file" id="AttachmentFile_PQ"  accept=".pdf" />
+                        <div class="col-md-2">
+                            <a id="AttachmentName_PQ" href="#" class="m-10" target="_blank"></a>
+                        </div>
+                        <div>
+                            حجم الملف المسموح به يجب أن لا يتجاوز 10 ميجا بايت ومن نوع pdf
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">شرح مختصر عن المادة العلمية / ملاحظات أخرى</label>
+                        <textarea name="#0" class="form-control" rows="4" cols="50" id="txtNotes"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary-600" type="submit" onclick="SaveProfessionalqualifications()">إضافة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">قائمة المؤهلات العملية</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table bordered-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">النوع</th>
+                                    <th scope="col">الاسم</th>
+                                    <th scope="col"> مكان </th>
+                                    <th scope="col">نوع التقديم</th>
+                                    <th scope="col">المؤسسة المقدم لها الخدمة</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblPQ">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><!-- card end -->
+        </div>
+    </div>
+</div>
