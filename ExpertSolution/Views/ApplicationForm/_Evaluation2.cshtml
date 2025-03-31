@@ -65,7 +65,7 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                     <tbody id="tbllanguages">
                                         @foreach (var item in Model.languageLst)
                                         {
                                             <tr data-id="@item.Id">
@@ -161,7 +161,7 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tblComputerSkills">
                                             @foreach (var item in Model.ComSkillsLst)
                                             {
                                                 <tr data-id="@item.Id">
@@ -236,6 +236,24 @@
 
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row ">
+        @* <div class="col-md-4 "> *@
+        @*     <nav> *@
+        @*         <ol class="breadcrumb" style="float:left"> *@
+        @*             <li class="breadcrumb-item active padding-top-10">صفحة 2 - 6</li> *@
+        @*         </ol> *@
+        @*     </nav> *@
+        @* </div> *@
+        <div class="col-8 text-start">
+            <button class="btn btnNext" onclick="Expert.Application.Next('divEvaluationFirst','divEvaluationSecond')">التالى</button>
+            <button class="btn btnPrev" onclick="Expert.Application.Previous('divEvaluationFirst','divMainInformation')">السابق</button>
+
+        </div>
+        <div class="col-4 text-end">
+            <button class="btn btnSave" style="@disabled" onclick="Expert.Application.SaveClose('divEvaluationSeven')">حفظ وإغلاق</button>
+
         </div>
     </div>
 </div>
