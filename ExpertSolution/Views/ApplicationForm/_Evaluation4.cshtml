@@ -27,14 +27,15 @@
     // var evalView = new ApplicationFormEvaluationView();
 
 }
-<div class="dashboard-main-body">
+<div class="dashboard-main-body bg-base droid-arabic-kufi container">
 
     <div class="row gy-4">
         <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
+            <div class=" text-center heder-forms">
                     <h5 class="card-title mb-0"> الخبرات العملية</h5>
                 </div>
+            <div class=" form-porder ">
+
                 <div class="card-body row gy-3">
                     <div class="col-md-6">
                         <label class="form-label">الاسم</label>
@@ -90,7 +91,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label class="form-label">شرح مختصر عن المادة العلمية / ملاحظات أخرى</label>
                         <textarea name="#0" class="form-control" rows="4" cols="50" id="txtNotes"></textarea>
                     </div>
@@ -101,29 +102,39 @@
             </div>
         </div>
         <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">قائمة المؤهلات العملية</h5>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table bordered-table mb-0">
-                            <thead>
-                                <tr>
-                                    <th scope="col">النوع</th>
-                                    <th scope="col">الاسم</th>
-                                    <th scope="col"> مكان </th>
-                                    <th scope="col">نوع التقديم</th>
-                                    <th scope="col">المؤسسة المقدم لها الخدمة</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody id="tblPQ">
-                            </tbody>
-                        </table>
+            <div class=" text-center heder-forms ">
+                <h5 class="text-white">قائمة المؤهلات العملي</h5>
+            </div>
+
+            <div class=" form-porder ">
+                <div class="table-responsive scroll-sm">
+                    <div class="table-center">
+                        <div class="scroll-container" data-simplebar>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="15%" style="text-align: center; ">النوع</th>
+                                        <th width="25%" style="text-align: center; ">الاسم</th>
+                                        <th width="10%" style="text-align: center; ">مكان</th>
+                                        <th width="15%" style="text-align: center; ">نوع التقديم</th>
+                                        <th width="20%" style="text-align: center; ">المؤسسة المقدم لها الخدمة</th>
+                                        <th width="10%" style="text-align: center; "></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblPQ">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+
+                       
                     </div>
                 </div>
-            </div><!-- card end -->
+           
         </div>
     </div>
 </div>

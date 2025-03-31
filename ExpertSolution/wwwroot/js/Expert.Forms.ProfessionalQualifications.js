@@ -68,12 +68,12 @@ function FillProfessionalQualifications() {
                     trainttype = "حضوريا";
                 else if (entity.type == "3")
                     trainttype = "عن بعد / حضوريا";
-                row += "<td> <div class='d-flex align-items-center'><span class='text-lg text-secondary-light fw-semibold flex-grow-1'>" + entity.trainingTypeName + "</span></div></td > ";
-                row += "<td> <div class='d-flex align-items-center'><span class='text-lg text-secondary-light fw-semibold flex-grow-1'>" + entity.name + "</span></div></td > ";
-                row += "<td >" + entity.place + "</td>";
-                row += "<td >" + trainttype + "</td>";
-                row += "<td >" + entity.organization + "</td>";
-                row += "<td  align='center'><div class='d-flex align-items-center gap-10 justify-content-center'>" +
+                row += "<td  width='15 % ' data-label=' : النوع'> <div class='d-flex align-items-center'><span class='text-lg text-secondary-light fw-semibold flex-grow-1'>" + entity.trainingTypeName + "</span></div></td > ";
+                row += "<td width='25 % ' data-label=' : الاسم'> <div class='d-flex align-items-center'><span class='text-lg text-secondary-light fw-semibold flex-grow-1'>" + entity.name + "</span></div></td > ";
+                row += "<td width='10 % ' data-label=' : مكان'>" + entity.place + "</td>";
+                row += "<td width='15 % ' data-label=' : نوع التقديم'>" + trainttype + "</td>";
+                row += "<td width='20 % ' data-label=' : المؤسسة المقدم لها الخدمة'>" + entity.organization + "</td>";
+                row += "<td width='10 % ' data-label=' : الاعدادات' align='center'><div class='d-flex align-items-center gap-10 justify-content-center'>" +
                     "<button type='button' onclick='EditProfessionalqualifications(" + entity.id + ")' class='bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle'> " +
                     "<iconify-icon icon='lucide:edit' class='menu-icon'></iconify-icon></button>" +
                     "<button type='button' onclick='DeleteProfessionalqualifications(" + entity.id + ")' class='remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle'>" +
