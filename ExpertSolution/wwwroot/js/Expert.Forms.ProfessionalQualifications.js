@@ -68,8 +68,8 @@ function FillProfessionalQualifications() {
                     trainttype = "حضوريا";
                 else if (entity.type == "3")
                     trainttype = "عن بعد / حضوريا";
-                row += "<td  width='15 % ' data-label=' : النوع'> <div class='d-flex align-items-center'><span class='text-lg text-secondary-light fw-semibold flex-grow-1'>" + entity.trainingTypeName + "</span></div></td > ";
-                row += "<td width='25 % ' data-label=' : الاسم'> <div class='d-flex align-items-center'><span class='text-lg text-secondary-light fw-semibold flex-grow-1'>" + entity.name + "</span></div></td > ";
+                row += "<td width='15 % ' data-label=' : النوع'> " + entity.trainingTypeName + "</td > ";
+                row += "<td width='25 % ' data-label=' : الاسم'> " + entity.name + "</td > ";
                 row += "<td width='10 % ' data-label=' : مكان'>" + entity.place + "</td>";
                 row += "<td width='15 % ' data-label=' : نوع التقديم'>" + trainttype + "</td>";
                 row += "<td width='20 % ' data-label=' : المؤسسة المقدم لها الخدمة'>" + entity.organization + "</td>";

@@ -68,7 +68,7 @@ function FillAcademicQualifications() {
         if (data != null && data.Valid) {
             $.each(data.result, function (e, entity) {
                 var row = "<tr>";
-                row += "<td  data-label=' : المؤهل'> <div class='d-flex align-items-center'><span class='text-lg text-secondary-light fw-semibold flex-grow-1'>" + entity.name + "</span></div></td > ";
+                row += "<td  data-label=' : المؤهل'> " + entity.name + "</td > ";
                 row += "<td  data-label=' : جامعه / معهد'>" + entity.place + "</td>";
                 row += "<td  data-label=' : الدرجة العلمية'>" + entity.degreeName + "</td>";
                 row += "<td  data-label=' : التخصص'>" + entity.specialist + "</td>";

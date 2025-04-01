@@ -25,14 +25,15 @@
     // var evalView = new ApplicationFormEvaluationView();
 
 }
-<div class="dashboard-main-body">
+<div class="dashboard-main-body bg-base droid-arabic-kufi container">
 
     <div class="row gy-4">
         <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">الشهادات المهنية </h5>
+            <div class=" text-center heder-forms">
+                <h5 class="text-white">الشهادات المهنية </h5>
                 </div>
+                <div class=" form-porder ">
+
                 <div class="card-body row gy-3">
 
                     <div class="col-md-6">
@@ -41,16 +42,17 @@
                         <input type="text" id="txtNameCQ" class="form-control" required>
                         <input type="hidden" id="hiddenCQId" value="" data-status="" />
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">جهة الإعتماد </label>
-                        <span style="color:red;">*</span>
-                        <input type="text" id="txtplaceCQ" class="form-control" required>
-                        
-                    </div>
+                   
                     <div class="col-md-6">
                         <label class="form-label">التاريخ</label>
                         <span style="color:red;">*</span>
                         <input type="date" id="txtYearCQ" class="form-control" required style="padding-left:40px !important">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">جهة الإعتماد </label>
+                        <span style="color:red;">*</span>
+                        <input type="text" id="txtplaceCQ" class="form-control" required>
+
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">الدرجة / التقدير</label>
@@ -73,33 +75,38 @@
                         </div>
 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label class="form-label">ملاحظات</label>
                         <textarea name="#0" class="form-control" id="txtNotesCQ" rows="4" cols="50" placeholder="ملاحظات أخرى..."></textarea>
                     </div>
                     <div class="col-12">
-                        <button class="btn btn-primary-600" onclick="SaveCertificateQualifications()" type="submit">إضافة</button>
+                        <button class="btn btnAdd" onclick="SaveCertificateQualifications()" type="submit">إضافة</button>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">
-                        قائمة الشهادات المهنية 
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table bordered-table mb-0">
-                            <thead>
+
+            <div class=" text-center heder-forms ">
+                <h5 class="text-white">
+                    قائمة الشهادات المهنية
+                </h5>
+            </div>
+
+            <div class=" form-porder ">
+                <div class="table-responsive scroll-sm">
+                    <div class="table-center">
+                        <div class="scroll-container" data-simplebar>
+                            <table>
+                                <thead>
                                 <tr>
-                                    <th scope="col">الشهادة</th>
-                                    <th scope="col">معتمدة من</th>
-                                    <th scope="col">تاريخ</th>
-                                    <th scope="col">الدرجة / التقدير</th>
-                                    <th scope="col"></th>
+                                        <th width ="20%" style="text-align: center;">الشهادة</th>
+                                        <th width ="30%" style="text-align: center;">معتمدة من</th>
+                                        <th width ="15%" style="text-align: center;"> تاريخ</th>
+                                        <th width ="20%" style="text-align: center;">الدرجة / التقدير</th>
+                                        <th width ="15%" style="text-align: center;"></th>
                                 </tr>
                             </thead>
                             <tbody id="tblCQ">
@@ -108,6 +115,7 @@
 
                             </tbody>
                         </table>
+                    </div>
                     </div>
                 </div>
             </div><!-- card end -->
