@@ -81,11 +81,12 @@
                             <span style="color:red;">*</span>
                             <input class="form-control" type="file" id="AttachmentFile_Main" value="@entity.Filename" accept=".pdf" />
                             <div class="col-md-2">
-                                <a id="AttachmentName_Main" href="@entity.Filename" class="m-10" target="_blank">@entity.FileDisplayName</a>
+                                <a class="form-label" id="AttachmentName_Main" href="@entity.Filename" class="m-10" target="_blank">@entity.FileDisplayName</a>
                             </div>
-                            <div>
+                            <p class="form-label">
                                 حجم الملف المسموح به يجب أن لا يتجاوز 10 ميجا بايت ومن نوع pdf
-                            </div>
+                            </p>
+                           
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">الدوله  </label>
