@@ -108,75 +108,75 @@
                     </div>
                     </<div>
                     </div>
-                    <div class="col-md-12">
-                        <div class=" text-center heder-forms ">
-                            <h5 class="text-white">وسائل التواصل</h5>
-                        </div>
-                        <div class=" form-porder ">
+                    
+                </div>
+            </div>
+            <div class="col-md-12 py-5">
+                <div class=" text-center heder-forms ">
+                    <h5 class="text-white">وسائل التواصل</h5>
+                </div>
+                <div class=" form-porder ">
+                    <div class="table-responsive scroll-sm">
+                        <div class="table-center">
+                            <div class="scroll-container" data-simplebar>
+                                <table id="Social-table">
+                                    <thead>
+                                        <tr>
+                                            <th width="10%" style="text-align: center; ">#</th>
+                                            <th width="30%" style="text-align: center; ">وسائل التواصل</th>
+                                            <th width="40%" style="text-align: center; ">الرابط</th>
+                                            <th width="20%" style="text-align: center; ">
+                                                <button type="button" id="addRowSocial" class=" radius-8 d-inline-flex align-items-center gap-1">
+                                                    <iconify-icon icon="simple-line-icons:plus" class="text-xl"></iconify-icon>
+                                                    <span class="add-text">إضافة</span>
+                                                </button>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.SocialLinksLst)
+                                        {
+                                            <tr data-id="@item.Id">
+                                                <td width="10%" data-label="#">@item.Number</td>
+                                                <td width="30%" data-label=" : وسائل التواصل">
+                                                    @if (@item.Name == "Facebook")
+                                                    {
+                                                        <span class="dept color-Facebook ">@item.Name</span>
+                                                    }
+                                                    else if (@item.Name == "LinkedIn")
+                                                    {
+                                                        <span class="dept color-LinkedIn ">@item.Name</span>
+                                                    }
+                                                    else if (@item.Name == "Instagram")
+                                                    {
+                                                        <span class="dept color-Instagram ">@item.Name</span>
+                                                    }
+                                                    else if (@item.Name == "X")
+                                                    {
+                                                        <span class="dept color-Twitter ">@item.Name</span>
+                                                    }
+                                                    else if (@item.Name == "YouTube")
+                                                    {
+                                                        <span class="dept color-YouTube ">@item.Name</span>
+                                                    }
+                                                </td>
+                                                <td width="40%" data-label=" :  الرابط ">
+                                                    <a href="@item.Link" class="action-mail">@item.Link</a>
+                                                </td>
+                                                <td width="20%" data-label=" : اضافة">
 
-                            <div class="table-responsive scroll-sm">
-                                <div class="table-center">
-                                    <div class="scroll-container" data-simplebar>
-                                        <table id="Social-table">
-                                            <thead>
-                                                <tr>
-                                                    <th width="10%" style="text-align: center; ">#</th>
-                                                    <th width="30%" style="text-align: center; ">وسائل التواصل</th>
-                                                    <th width="40%" style="text-align: center; ">الرابط</th>
-                                                    <th width="20%" style="text-align: center; ">
-                                                        <button type="button" id="addRowSocial" class=" radius-8 d-inline-flex align-items-center gap-1">
-                                                            <iconify-icon icon="simple-line-icons:plus" class="text-xl"></iconify-icon>
-                                                            <span class="add-text">إضافة</span>
-                                                        </button>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var item in Model.SocialLinksLst)
-                                                {
-                                                    <tr data-id="@item.Id">
-                                                        <td width="10%" data-label="#">@item.Number</td>
-                                                        <td width="30%" data-label=" : وسائل التواصل">
-                                                            @if (@item.Name == "Facebook")
-                                                            {
-                                                                <span class="dept color-Facebook ">@item.Name</span>
-                                                            }
-                                                            else if (@item.Name == "LinkedIn")
-                                                            {
-                                                                <span class="dept color-LinkedIn ">@item.Name</span>
-                                                            }
-                                                            else if (@item.Name == "Instagram")
-                                                            {
-                                                                <span class="dept color-Instagram ">@item.Name</span>
-                                                            }
-                                                            else if (@item.Name == "X")
-                                                            {
-                                                                <span class="dept color-Twitter ">@item.Name</span>
-                                                            }
-                                                            else if (@item.Name == "YouTube")
-                                                            {
-                                                                <span class="dept color-YouTube ">@item.Name</span>
-                                                            }
-                                                        </td>
-                                                        <td width="40%" data-label=" :  الرابط ">
-                                                            <a href="@item.Link" class="action-mail">@item.Link</a>
-                                                        </td>
-                                                        <td width="20%" data-label=" : اضافة">
+                                                    <button type="button" style="@disabled" class="remove-row remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                                        <iconify-icon icon='fluent:delete-24-regular' class='menu-icon'></iconify-icon>
+                                                    </button>
 
-                                                            <button type="button" style="@disabled" class="remove-row remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                                                <iconify-icon icon='fluent:delete-24-regular' class='menu-icon'></iconify-icon>
-                                                            </button>
-
-                                                            @* <button type="button" class="remove-row" style="@disabled"> *@
-                                                            @*     <iconify-icon icon="ic:twotone-close" class="text-danger-main text-xl"></iconify-icon> *@
-                                                            @* </button> *@
-                                                        </td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                                    @* <button type="button" class="remove-row" style="@disabled"> *@
+                                                    @*     <iconify-icon icon="ic:twotone-close" class="text-danger-main text-xl"></iconify-icon> *@
+                                                    @* </button> *@
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
