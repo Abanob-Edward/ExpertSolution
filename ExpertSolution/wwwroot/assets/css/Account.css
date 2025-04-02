@@ -3,18 +3,25 @@
     display: flex;
     justify-content: flex-end;
 }
+
 .btnMore {
     width: 200px;
     font-size: 20px;
-    border-radius: 10px;
-    border: 2px solid #dcac6c;
-    color: #bba188;
+    border-radius: 50px;
+    border: 2px solid #5d9477;
+    color: #5d9477;
     background-color: #fff;
 }
 
     .btnMore:hover {
-        border-radius: 15px;
         border: 2px solid rgba(2, 87, 102, 0.5);
-        color: #b0b0b7;
+        color: #fff;
+        background-color: #5d9477;
         transition: all 0.6s ease;
     }
+.Cart_Login {
+    background-color: #ecf0f3;
+    padding: 27px 32px 17px 35px;
+    border-radius: 40px;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+}
