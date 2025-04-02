@@ -36,23 +36,23 @@
                         <div class="col-md-6 icon-field mb-2" style="margin-top:20px">
                             <label class="form-label">الهاتف</label>
                             <span style="color:red;">*</span>
-                            <input id="phone" name="phone" type="number" value="@entity.Phone" class="form-control bg-neutral-50 radius-12" disabled style="height:45px;padding-right:50px !important;text-align:end" />
+                            <input id="phone" name="phone" type="number" value="@entity.Phone" class="form-control radius-12" disabled style="height:45px;padding-right:50px !important;text-align:end" />
                             <div class="invalid-feedback"> يجب إدخال رقم الهاتف</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">الجنسية  </label>
                             <span style="color:red;">*</span>
                             <select class="form-select" id="selectNationalityId" placeholder="الجنسية" required>
-                                <option value="">--اختر--</option>
+                                <option class="form-select" value="">--اختر--</option>
                                 @foreach (var obj in countyLst)
                                 {
                                     if (obj.Id == entity.NationalityId)
                                     {
-                                        <option selected value="@obj.Id">@obj.Name.Trim()</option>
+                                        <option  class="form-select" selected value="@obj.Id">@obj.Name.Trim()</option>
                                     }
                                     else
                                     {
-                                        <option value="@obj.Id">@obj.Name.Trim()</option>
+                                        <option class="form-select" value="@obj.Id">@obj.Name.Trim()</option>
                                     }
                                 }
                             </select>
@@ -92,16 +92,16 @@
                             <label class="form-label">الدوله  </label>
                             <span style="color:red;">*</span>
                             <select class="form-select" id="selectCountryId" required placeholder="الدوله">
-                                <option value="">--اختر--</option>
+                                <option class="form-label" value="">--اختر--</option>
                                 @foreach (var obj in countyLst)
                                 {
                                     if (obj.Id == entity.CountryId)
                                     {
-                                        <option selected value="@obj.Id">@obj.Name.Trim()</option>
+                                        <option class="form-select" selected value="@obj.Id">@obj.Name.Trim()</option>
                                     }
                                     else
                                     {
-                                        <option value="@obj.Id">@obj.Name.Trim()</option>
+                                        <option class="form-select" value="@obj.Id">@obj.Name.Trim()</option>
                                     }
                                 }
                             </select>

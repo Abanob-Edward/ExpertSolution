@@ -20,7 +20,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     var yearDropdown = document.getElementById("txtYear");
 
-    // Set the range of years (e.g., from 1900 to the current year)
     var currentYear = new Date().getFullYear();
     var startYear = 1900;
 
@@ -29,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var option = document.createElement("option");
         option.value = year;
         option.text = year;
+        option.classList.add("form-select"); // Add classes here
         yearDropdown.appendChild(option);
     }
 });

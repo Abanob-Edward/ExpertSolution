@@ -10700,20 +10700,20 @@ div.dt-container .dt-paging .dt-paging-button:hover:hover, div.dt-container .dt-
 /* === form css start === */
 .form-select, textarea {
   border: 1px solid var(--input-form-light);
-  color: var(--text-primary-light) !important;
-  background-color: var(--white);
+/*  color: var(--text-primary-light) !important;*/
+/*  background-color: var(--white);*/
   padding: 0.5625rem 1.25rem;
 }
 
 .form-select::placeholder, .form-control::placeholder, textarea::placeholder {
-  color: var(--text-secondary-light);
+/*  color: var(--text-secondary-light);*/
   font-size: 1rem !important;
 }
 
 .form-select:focus, .form-select:active, .form-control:focus, .form-control:active, textarea:focus, textarea:active {
   box-shadow: none;
   border-color: var(--primary-600) !important;
-  background-color: transparent;
+/*  background-color: transparent;*/
 }
 
 .form-select {
@@ -10744,7 +10744,7 @@ div.dt-container .dt-paging .dt-paging-button:hover:hover, div.dt-container .dt-
 }
 
 .form-control[readonly] {
-  background-color: var(--neutral-50);
+/*  background-color: var(--neutral-50);*/
 }
 
 .form-control.form-control-lg {
@@ -11147,7 +11147,7 @@ div.dt-container .dt-paging .dt-paging-button:hover:hover, div.dt-container .dt-
   top: 0;
   inset-inline-start: 0;
   border: 0;
-  background-color: transparent;
+/*  background-color: transparent;*/
 }
 
 .form-mobile-field .form-control {

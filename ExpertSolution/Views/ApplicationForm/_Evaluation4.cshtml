@@ -48,10 +48,10 @@
                         <label class="form-label">النوع  </label>
                         <span style="color:red;">*</span>
                         <select class="form-select" id="selectTrainingType" required>
-                            <option value="">--اختر النوع--</option>
+                            <option class="form-select" value="">--اختر النوع--</option>
                             @foreach (var obj in lookupLst)
-                            {
-                                <option value="@obj.Id">@obj.Name.Trim()</option>
+                            {                                                                 
+                                <option class="form-select" value="@obj.Id">@obj.Name.Trim()</option>
                             }
                         </select>
 
@@ -66,10 +66,10 @@
                         <label class="form-label">نوع التقديم </label>
                         <span style="color:red;">*</span>
                         <select class="form-select" id="selecttype" required>
-                            <option value="" selected>--اختر نوع التقديم  --</option>
-                            <option  value="1">عن بعد</option>
-                            <option value="2">حضوريا</option>
-                            <option value="3">عن بعد / حضوريا</option>
+                            <option class="form-select" value="" selected>--اختر نوع التقديم  --</option>
+                            <option class="form-select" value="1">عن بعد</option>
+                            <option class="form-select" value="2">حضوريا</option>
+                            <option class="form-select" value="3">عن بعد / حضوريا</option>
                         </select>
 
                     </div>

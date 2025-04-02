@@ -1,7 +1,7 @@
 ﻿@{
     var userInfo = Html.GetUserinfo();
 }
-<div class="navbar-header">
+<div class="navbar-header droid-arabic-kufi">
     <div class="row align-items-center justify-content-between">
         <div class="col-auto">
             <div class="d-flex flex-wrap align-items-center gap-4">
@@ -25,8 +25,8 @@
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">3</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end p-0">
-                        <div class="dropdown-header bg-light py-3 px-4">
-                            <h6 class="mb-0">الرسائل</h6>
+                        <div class="dropdown-header  py-3 px-4">
+                            <h6 class="mb-0 d-flex justify-content-center align-items-center form-label">الرسائل</h6>
                         </div>
                         <div class="dropdown-body p-2" style="min-width: 250px;">
                             <!-- Message items would go here -->
@@ -41,11 +41,37 @@
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">5</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end p-0">
-                        <div class="dropdown-header bg-light py-3 px-4">
-                            <h6 class="mb-0">الإشعارات</h6>
+                        <div class="dropdown-header  py-3 px-4">
+                            <h6 class="mb-0 d-flex justify-content-center align-items-center form-label">الإشعارات</h6>
                         </div>
                         <div class="dropdown-body p-2" style="min-width: 250px;">
-                            <!-- Notification items would go here -->
+                            <div class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+
+                                <div class="toast-container justify-content-between">
+                                    <div class="toast d-block" role="alert"  aria-live="assertive" aria-atomic="true">
+                                        <div class="toast-header">
+                                            <iconify-icon icon="iconoir:bell" class="text-primary-light text-xl"></iconify-icon>
+                                            <strong class="me-auto">الرسالة الاولي</strong>
+                                            <small class="text-muted">الان</small>
+                                            @* <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> *@
+                                        </div>
+                                        <div class="toast-body">
+انظر....................                                        </div>
+                                    </div>
+
+                                    <div class="toast d-block" role="alert" aria-live="assertive" aria-atomic="true">
+                                        <div class="toast-header">
+                                            <iconify-icon icon="iconoir:bell" class="text-primary-light text-xl"></iconify-icon>
+                                            <strong class="me-auto">الرساله الثانية</strong>
+                                            <small class="text-muted">  ثانيتان</small>
+                                            @* <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> *@
+                                        </div>
+                                        <div class="toast-body">
+تم اشتراك احمد                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>

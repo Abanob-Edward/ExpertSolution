@@ -57,10 +57,10 @@
                         <label class="form-label">الدرجة العلمية</label>
                         <span style="color:red;">*</span>
                         <select class="form-select" id="selectDegreeScience" required>
-                            <option value="" selected>--اختر الدرجة العلمية --</option>
+                            <option  class="form-select" value="" selected>--اختر الدرجة العلمية --</option>
                             @foreach (var obj in scienceDegreeList)
                             {
-                                <option value="@obj.Id">@obj.Name.Trim()</option>
+                                <option class="form-select" value="@obj.Id">@obj.Name.Trim()</option>
                             }
                            
                         </select>
@@ -75,8 +75,8 @@
                     <div class="col-md-6">
                         <label class="form-label">سنة </label>
                         <span style="color:red;">*</span>
-                        <select class="form-select" id="txtYear" required>
-                            <option value="">--اختر سنة--</option>
+                        <select class="form-select  " id="txtYear" required>
+                            <option class="form-label" value="">--اختر سنة--</option>
                             <!-- Years will be dynamically populated here -->
                         </select>
                     </div>
@@ -92,11 +92,11 @@
                         <label class="form-label">الدولة  </label>
                         <span style="color:red;">*</span>
                         <select class="form-select" id="selectCountryIdAQ" required>
-                            <option value="" >--اختر ألدولة --</option>
+                            <option class="form-select" value="">--اختر ألدولة --</option>
                             @foreach (var obj in countyLst)
                             {
-                               
-                                <option value="@obj.Id">@obj.Name.Trim()</option>
+
+                                <option class="form-select" value="@obj.Id">@obj.Name.Trim()</option>
                             }
 
                         </select>
