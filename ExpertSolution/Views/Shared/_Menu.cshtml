@@ -1,4 +1,7 @@
-﻿<ul class="sidebar-menu" id="sidebar-menu">
+﻿@{
+    var userInfo = Html.GetUserinfo();
+}
+<ul class="sidebar-menu" id="sidebar-menu">
    @*  <li class="dropdown">
         <a href="javascript:void(0)">
             <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
@@ -29,5 +32,34 @@
             <span>خروج</span>
         </a>
     </li>
+
+
+    <!-- User Profile Dropdown -->
+    <li class="menu-item user-profile  mt-auto">
+        <a class="menu-link  text-decoration-none d-flex align-items-center" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="~/assets/images/user.png" alt="User" class="menu-icon " >
+            <span class="menu-text me-auto">@userInfo.ContactFullName</span>
+            
+
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end w-100" aria-labelledby="userDropdown">
+
+            <li>
+                <a class="dropdown-item text-black px-3 py-2 d-flex align-items-center gap-3 hover-bg-transparent hover-text-primary" href="@Url.Action("ChangePassword", "Account")">
+                    <iconify-icon icon="icon-park-outline:setting-two" class="fs-5"></iconify-icon>
+                    <span>تحديث كلمة المرور</span>
+                </a>
+            </li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li>
+                <a class="dropdown-item text-black px-3 py-2 d-flex align-items-center gap-3 hover-bg-transparent hover-text-danger" href="@Url.Action("Login", "Account")">
+                    <iconify-icon icon="lucide:power" class="fs-5"></iconify-icon>
+                    <span>خروج</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
    
 </ul>

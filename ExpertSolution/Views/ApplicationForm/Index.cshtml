@@ -229,13 +229,15 @@
             @*         </ol> *@
             @*     </nav> *@
             @* </div> *@
-        <div class="col-12 text-center">
-            <button class="btn btn-secondary" onclick="Expert.Application.Previous('divEvaluationFive','divEvaluationFourth')">السابق</button>
-                <button class="btn btn-primary" style="@disabled" onclick="Expert.Application.SaveClose('divEvaluationFive')"> إغلاق</button>
-                <button class="btn" style="background-color:#55913c;@disabled" onclick="Expert.Application.Finish('divEvaluationFive')">إنهاء التسجيل / الدفع الإلكترونى</button>
+        <div class="col-8 text-start">
+            <button class="btn btnPrev" onclick="Expert.Application.Previous('divEvaluationFive','divEvaluationFourth')">السابق</button>
+            <button class="btn btnNext" style="@disabled" onclick="Expert.Application.SaveClose('divEvaluationFive')"> إغلاق</button>
+        </div>
+        <div class="col-4 text-end">
+            <button class="btn btnSave" style=";@disabled" onclick="Expert.Application.Finish('divEvaluationFive')">إنهاء التسجيل / الدفع الإلكترونى</button>
                 @if (userInfo.UserType == 3)
                 {
-                    <button class="btn " style="background-color:#55913c;" onclick="Expert.Evaluation.FinishEvaluation()">إنهاء التقييم </button>
+                    <button class="btnAdd "  onclick="Expert.Evaluation.FinishEvaluation()">إنهاء التقييم </button>
 
                 }
             </div>

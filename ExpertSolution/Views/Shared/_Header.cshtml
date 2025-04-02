@@ -18,52 +18,114 @@
         <div class="col-auto">
             <div class="d-flex flex-wrap align-items-center gap-3">
                 <button type="button" data-theme-toggle class="w-32-px h-32-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"></button>
-                
-
+                <!-- Messages Dropdown -->
                 <div class="dropdown">
-                    <button class="has-indicator w-32-px h-32-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown">
+                    <button class="btn btn-icon btn-light  bg-neutral-200 rounded-circle position-relative" type="button" data-bs-toggle="dropdown">
                         <iconify-icon icon="mage:email" class="text-primary-light text-xl"></iconify-icon>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">3</span>
                     </button>
-                    
-                </div><!-- Message dropdown end -->
-
-                <div class="dropdown">
-                    <button class="has-indicator w-32-px h-32-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown">
-                        <iconify-icon icon="iconoir:bell" class="text-primary-light text-xl"></iconify-icon>
-                    </button>
-                    
-                </div><!-- Notification dropdown end -->
-
-                <div class="dropdown">
-                    <button class="d-flex justify-content-center align-items-center rounded-circle" type="button" data-bs-toggle="dropdown">
-                        <img src="~/assets/images/user.png" alt="image" class="w-32-px h-32-px object-fit-cover rounded-circle">
-                    </button>
-                    <div class="dropdown-menu to-top dropdown-menu-sm">
-                        <div class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
-                            <div>
-                                <h6 class="text-lg text-primary-light fw-semibold mb-2">@userInfo.ContactFullName</h6>
-                                <span class="text-secondary-light fw-medium text-sm">@userInfo.Email</span>
-                            </div>
-                            <button type="button" class="hover-text-danger">
-                                <iconify-icon icon="radix-icons:cross-1" class="icon text-xl"></iconify-icon>
-                            </button>
+                    <div class="dropdown-menu dropdown-menu-end p-0">
+                        <div class="dropdown-header bg-light py-3 px-4">
+                            <h6 class="mb-0">الرسائل</h6>
                         </div>
-                        <ul class="to-top-list">
-                        
-                            <li>
-                                <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3" href=" @Url.Action("ChangePassword", "Account")">
-                                    <iconify-icon icon="icon-park-outline:setting-two" class="icon text-xl"></iconify-icon>  تحديث كلمة المرور
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3" href="@Url.Action("Login", "Account")">
-                                    <iconify-icon icon="lucide:power" class="icon text-xl"></iconify-icon>  خروج
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="dropdown-body p-2" style="min-width: 250px;">
+                            <!-- Message items would go here -->
+                        </div>
                     </div>
-                </div><!-- Profile dropdown end -->
+                </div>
+
+                <!-- Notifications Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-icon btn-light  bg-neutral-200 rounded-circle position-relative" type="button" data-bs-toggle="dropdown">
+                        <iconify-icon icon="iconoir:bell" class="text-primary-light text-xl"></iconify-icon>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">5</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end p-0">
+                        <div class="dropdown-header bg-light py-3 px-4">
+                            <h6 class="mb-0">الإشعارات</h6>
+                        </div>
+                        <div class="dropdown-body p-2" style="min-width: 250px;">
+                            <!-- Notification items would go here -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Notification dropdown end -->
+
+                @* <div class="dropdown"> *@
+                @*     <button class="d-flex justify-content-center align-items-center rounded-circle" type="button" data-bs-toggle="dropdown"> *@
+                @*         <img src="~/assets/images/user.png" alt="image" class="w-32-px h-32-px object-fit-cover rounded-circle"> *@
+                @*     </button> *@
+                @*     <div class="dropdown-menu to-top dropdown-menu-sm"> *@
+                @*         <div class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2"> *@
+                @*             <div> *@
+                @*                 <h6 class="text-lg text-primary-light fw-semibold mb-2">@userInfo.ContactFullName</h6> *@
+                @*                 <span class="text-secondary-light fw-medium text-sm">@userInfo.Email</span> *@
+                @*             </div> *@
+                @*             <button type="button" class="hover-text-danger"> *@
+                @*                 <iconify-icon icon="radix-icons:cross-1" class="icon text-xl"></iconify-icon> *@
+                @*             </button> *@
+                @*         </div> *@
+                @*         <ul class="to-top-list"> *@
+                        
+                @*             <li> *@
+                @*                 <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3" href=" @Url.Action("ChangePassword", "Account")"> *@
+                @*                     <iconify-icon icon="icon-park-outline:setting-two" class="icon text-xl"></iconify-icon>  تحديث كلمة المرور *@
+                @*                 </a> *@
+                @*             </li> *@
+                @*             <li> *@
+                @*                 <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3" href="@Url.Action("Login", "Account")"> *@
+                @*                     <iconify-icon icon="lucide:power" class="icon text-xl"></iconify-icon>  خروج *@
+                @*                 </a> *@
+                @*             </li> *@
+                @*         </ul> *@
+                @*     </div> *@
+                @* </div> *@
+                
+                <!-- Profile dropdown end -->
             </div>
         </div>
     </div>
 </div>
+<style>
+ 
+    
+    .btn-icon {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+    
+    .dropdown-menu {
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+    
+    .dropdown-item {
+        border-radius: 6px;
+        margin: 0 4px;
+        transition: all 0.2s;
+    }
+    
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .dropdown-header {
+        background-color: #f8f9fa;
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .w-40-px {
+        width: 40px;
+    }
+    
+    .h-40-px {
+        height: 40px;
+    }
+</style>
